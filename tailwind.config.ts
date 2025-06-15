@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,7 +19,13 @@ export default {
 			}
 		},
 		extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Roboto', 'sans-serif'],
+      },
 			colors: {
+        'brand-yellow': '#FFC700',
+        'brand-dark': '#1A1A1A',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
