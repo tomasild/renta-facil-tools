@@ -2,7 +2,7 @@
 const About = () => {
   return (
     <div className="bg-brand-dark text-white py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
+      <div className="container mx-auto animate-fade-in-up">
         <h1 className="text-4xl md:text-5xl font-extrabold font-heading text-center mb-12">
           Sobre <span className="text-brand-yellow">Arriendos F&C</span>
         </h1>

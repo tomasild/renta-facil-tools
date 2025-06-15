@@ -57,7 +57,7 @@ const QuoteCalculator = () => {
   };
 
   return (
-    <div id="cotizador" className="py-16 sm:py-24">
+    <div id="cotizador" className="py-16 sm:py-24 animate-fade-in-up">
       <div className="container mx-auto">
         <section aria-labelledby="tool-selection-title">
             <h2 id="tool-selection-title" className="text-3xl sm:text-4xl font-bold text-center mb-4 text-white">1. Elige tus Herramientas</h2>
@@ -65,14 +65,15 @@ const QuoteCalculator = () => {
               Selecciona los equipos que necesitas. Puedes agregar o quitar herramientas en cualquier momento.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {tools.map((tool) => (
-                <ToolCard
-                  key={tool.id}
-                  tool={tool}
-                  onAdd={handleAddTool}
-                  onRemove={handleRemoveTool}
-                  isSelected={selectedTools.some((t) => t.id === tool.id)}
-                />
+              {tools.map((tool, index) => (
+                <div key={tool.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
+                  <ToolCard
+                    tool={tool}
+                    onAdd={handleAddTool}
+                    onRemove={handleRemoveTool}
+                    isSelected={selectedTools.some((t) => t.id === tool.id)}
+                  />
+                </div>
               ))}
             </div>
         </section>

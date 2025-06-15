@@ -40,7 +40,7 @@ const Testimonials = () => {
   return (
     <section className="py-20 bg-brand-dark">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">Lo que dicen nuestros clientes</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 animate-fade-in-up">Lo que dicen nuestros clientes</h2>
         <Carousel
           opts={{
             align: "start",
@@ -52,7 +52,7 @@ const Testimonials = () => {
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
-                  <Card className="bg-secondary border-gray-700/50 h-full flex flex-col">
+                  <Card className="bg-secondary border-gray-700/50 h-full flex flex-col transition-transform duration-300 hover:scale-105">
                     <CardContent className="flex flex-col items-center text-center justify-center p-6 flex-grow">
                       <p className="text-muted-foreground mb-4 flex-grow">"{testimonial.comment}"</p>
                       <Avatar className="w-16 h-16 mb-4">
