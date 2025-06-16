@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { tools, Tool, calculateDiscount, getDiscountText } from '@/data/tools';
 import ToolCard from './ToolCard';
-import FAQ from './FAQ';
 import { DateRange } from 'react-day-picker';
 import { addDays, format, differenceInDays } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -64,9 +63,9 @@ const QuoteCalculator = () => {
 
   return (
     <div id="cotizador" className="py-16 sm:py-24 animate-fade-in-up">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <section aria-labelledby="tool-selection-title">
-            <h2 id="tool-selection-title" className="text-3xl sm:text-4xl font-bold text-center mb-4 text-white">1. Elige tus Herramientas</h2>
+            <h2 id="tool-selection-title" className="text-3xl sm:text-4xl font-bold text-center mb-4">1. Elige tus Herramientas</h2>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               Selecciona los equipos que necesitas. Puedes agregar o quitar herramientas en cualquier momento.
             </p>
@@ -84,23 +83,23 @@ const QuoteCalculator = () => {
             </div>
         </section>
 
-        <section aria-labelledby="quote-summary-title" className="mt-24 sticky top-10">
-            <div className="bg-secondary rounded-xl p-8 shadow-2xl border border-gray-800">
-                <h2 id="quote-summary-title" className="text-3xl sm:text-4xl font-bold text-center mb-8 text-white">2. Revisa y Envía tu Cotización</h2>
+        <section aria-labelledby="quote-summary-title" className="mt-24">
+            <div className="bg-card border border-border rounded-xl p-8 shadow-2xl">
+                <h2 id="quote-summary-title" className="text-3xl sm:text-4xl font-bold text-center mb-8">2. Revisa y Envía tu Cotización</h2>
                 
                 {selectedTools.length === 0 ? (
                     <p className="text-center text-muted-foreground py-12">Aún no has seleccionado herramientas. Tu cotización aparecerá aquí.</p>
                 ) : (
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <div>
-                            <h3 className="text-xl font-bold mb-4 text-white">Resumen de Herramientas</h3>
+                            <h3 className="text-xl font-bold mb-4">Resumen de Herramientas</h3>
                             <ul className="space-y-3 mb-6">
                                 {selectedTools.map(tool => (
-                                    <li key={tool.id} className="flex justify-between items-center bg-brand-dark p-3 rounded-md">
-                                        <span className="text-white">{tool.name}</span>
+                                    <li key={tool.id} className="flex justify-between items-center bg-muted p-3 rounded-md">
+                                        <span>{tool.name}</span>
                                         <div className="flex items-center gap-4">
-                                          <span className="font-semibold text-white">${tool.pricePerDay.toLocaleString('es-CL')} / día</span>
-                                          <Button variant="ghost" size="icon" className="text-red-500 hover:bg-red-900/50" onClick={() => handleRemoveTool(tool)}>
+                                          <span className="font-semibold">${tool.pricePerDay.toLocaleString('es-CL')} / día</span>
+                                          <Button variant="ghost" size="icon" className="text-destructive hover:bg-destructive/10" onClick={() => handleRemoveTool(tool)}>
                                             <Trash2 className="h-5 w-5" />
                                           </Button>
                                         </div>
@@ -108,7 +107,7 @@ const QuoteCalculator = () => {
                                 ))}
                             </ul>
 
-                             <h3 className="text-xl font-bold mb-4 mt-8 text-white">Fechas de Arriendo</h3>
+                             <h3 className="text-xl font-bold mb-4 mt-8">Fechas de Arriendo</h3>
                             <Popover>
                                 <PopoverTrigger asChild>
                                 <Button
@@ -148,8 +147,8 @@ const QuoteCalculator = () => {
                                 </PopoverContent>
                             </Popover>
                         </div>
-                        <div className="bg-brand-dark p-8 rounded-lg">
-                            <h3 className="text-xl font-bold mb-6 text-white">Completa tus datos</h3>
+                        <div className="bg-muted p-8 rounded-lg">
+                            <h3 className="text-xl font-bold mb-6">Completa tus datos</h3>
                             <div className="space-y-6 mb-6">
                                 <div>
                                     <Label htmlFor="name" className="text-lg">Nombre Completo</Label>
@@ -161,22 +160,22 @@ const QuoteCalculator = () => {
                                 </div>
                             </div>
 
-                            <div className="border-t border-gray-700 pt-6 space-y-4">
+                            <div className="border-t border-border pt-6 space-y-4">
                                 <div className="flex justify-between text-lg">
                                     <span className="text-muted-foreground">Subtotal diario:</span>
-                                    <span className="font-bold text-white">${subtotal.toLocaleString('es-CL')}</span>
+                                    <span className="font-bold">${subtotal.toLocaleString('es-CL')}</span>
                                 </div>
                                  <div className="flex justify-between text-lg">
                                     <span className="text-muted-foreground">Días de arriendo:</span>
-                                    <span className="font-bold text-white">{rentalDays}</span>
+                                    <span className="font-bold">{rentalDays}</span>
                                 </div>
                                 {discount > 0 && (
                                   <>
                                     <div className="flex justify-between text-lg">
                                         <span className="text-muted-foreground">Subtotal sin descuento:</span>
-                                        <span className="text-white">${(subtotal * rentalDays).toLocaleString('es-CL')}</span>
+                                        <span>${(subtotal * rentalDays).toLocaleString('es-CL')}</span>
                                     </div>
-                                    <div className="flex justify-between text-lg text-green-400">
+                                    <div className="flex justify-between text-lg text-green-600">
                                         <span className="flex items-center gap-2">
                                           <Tag className="h-4 w-4" />
                                           Descuento ({(discount * 100)}%):
@@ -186,15 +185,15 @@ const QuoteCalculator = () => {
                                   </>
                                 )}
                                 <div className="flex justify-between items-baseline text-2xl sm:text-3xl">
-                                    <span className="font-bold text-white">Total Estimado:</span>
-                                    <span className="font-bold text-brand-yellow">${total.toLocaleString('es-CL')}</span>
+                                    <span className="font-bold">Total Estimado:</span>
+                                    <span className="font-bold text-dmac-yellow">${total.toLocaleString('es-CL')}</span>
                                 </div>
                                 {discountText && (
-                                  <p className="text-green-400 text-center font-semibold">{discountText}</p>
+                                  <p className="text-green-600 text-center font-semibold">{discountText}</p>
                                 )}
                             </div>
                             
-                            <Button type="submit" size="lg" className="w-full mt-8 text-lg py-7">
+                            <Button type="submit" size="lg" className="w-full mt-8 text-lg py-7 bg-dmac-yellow hover:bg-dmac-yellow-hover text-black">
                                 <Send className="mr-2 h-5 w-5"/>
                                 Enviar Cotización
                             </Button>
@@ -203,9 +202,6 @@ const QuoteCalculator = () => {
                 )}
             </div>
         </section>
-
-        {/* FAQ Section */}
-        <FAQ />
       </div>
     </div>
   );

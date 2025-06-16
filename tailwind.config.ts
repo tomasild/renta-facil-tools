@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -28,18 +29,16 @@ export default {
         'dmac-yellow-hover': '#E6DF00',
         'dmac-red': '#BF0411',
         'dmac-red-hover': '#A0030E',
-        'dmac-white': '#FFFFFF',
-        'dmac-gray': '#F8F9FA',
         
-        // Keep existing shadcn colors
+        // Semantic colors
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#FEF800', // DMAC Yellow
-					foreground: '#BF0411' // DMAC Red
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
