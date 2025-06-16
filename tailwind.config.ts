@@ -24,20 +24,24 @@ export default {
         heading: ['Roboto', 'sans-serif'],
       },
 			colors: {
-        'brand-yellow': '#FFC700',
-        'brand-dark': '#1A1A1A',
+        'rojo-dmac': '#BF0411',
+        'rojo-dmac-darker': '#A0030E',
+        'amarillo-seguridad': '#FEF800', // Replaces brand-yellow
+        'blanco': '#FFFFFF',
+        'gris-claro': '#F3F4F6',
+        'brand-dark': '#1A1A1A', // Keeping brand-dark for now
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: 'hsl(var(--primary))', // Will be rojo-dmac
+					foreground: 'hsl(var(--primary-foreground))' // Will be blanco
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					DEFAULT: 'hsl(var(--secondary))', // Will be gris-claro
+					foreground: 'hsl(var(--secondary-foreground))' // Will be dark gray
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -48,8 +52,8 @@ export default {
 					foreground: 'hsl(var(--muted-foreground))'
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: 'hsl(var(--accent))', // Will be amarillo-seguridad
+					foreground: 'hsl(var(--accent-foreground))' // Will be black
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',

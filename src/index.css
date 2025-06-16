@@ -5,47 +5,54 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    /* New DMAC Light Theme Palette */
+    --background: 0 0% 100%; /* blanco #FFFFFF */
+    --foreground: 240 10% 3.9%; /* dark gray #0A0A0A - for text on white */
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%; /* blanco */
+    --card-foreground: 240 10% 3.9%; /* dark gray */
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%; /* blanco */
+    --popover-foreground: 240 10% 3.9%; /* dark gray */
 
-    --primary: 46 100% 50%; /* brand-yellow */
-    --primary-foreground: 240 10% 3.9%;
+    --primary: 355 96% 38%; /* rojo-dmac #BF0411 */
+    --primary-foreground: 0 0% 100%; /* blanco #FFFFFF */
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    /* Using a slightly off-white/very light gray for secondary backgrounds like cards or sections */
+    /* gris-claro #F3F4F6 is HSL 210 40% 96.1%. Let's use that for secondary. */
+    --secondary: 210 40% 96.1%; /* gris-claro #F3F4F6 */
+    --secondary-foreground: 240 10% 3.9%; /* dark gray for text on gris-claro */
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    /* Muted usually for less prominent text or elements */
+    --muted: 210 40% 90%; /* A slightly darker shade of gris-claro for muted elements */
+    --muted-foreground: 240 5% 45%; /* A softer dark gray for muted text */
 
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 58 100% 50%; /* amarillo-seguridad #FEF800 */
+    --accent-foreground: 0 0% 0%; /* black for text on amarillo-seguridad */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    /* Destructive actions (e.g. delete buttons) */
+    /* Using a slightly less intense red than primary for destructive, but still strong */
+    --destructive: 0 75% 50%; /* A clear, but not overwhelming red */
+    --destructive-foreground: 0 0% 100%; /* blanco */
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 46 100% 50%;
+    --border: 210 20% 88%; /* A visible border, slightly darker than gris-claro. (e.g. #DDE1E6) */
+    --input: 210 20% 92%; /* Slightly lighter than border for input fields background (e.g. #E9ECEF) */
+    --ring: 355 96% 38%; /* rojo-dmac for focus rings, consistent with primary actions */
 
     --radius: 0.5rem;
   }
 
-  /* No dark mode override needed, we'll use a dark theme by default */
+  /* No dark mode override needed as default is now light.
+     If dark mode is desired later, a .dark class with variable overrides would be added. */
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border; /* Uses HSL defined above */
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground; /* Uses HSL defined above */
     font-family: 'Inter', sans-serif;
   }
 
