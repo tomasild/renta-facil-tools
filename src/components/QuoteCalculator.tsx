@@ -1,11 +1,12 @@
 
 import { useState } from 'react';
-import { tools, Tool } from '@/data/tools';
+import { tools, Tool, calculateDiscount, getDiscountText } from '@/data/tools';
 import ToolCard from './ToolCard';
+import FAQ from './FAQ';
 import { DateRange } from 'react-day-picker';
 import { addDays, format, differenceInDays } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { Calendar as CalendarIcon, Send, Trash2 } from 'lucide-react';
+import { Calendar as CalendarIcon, Send, Trash2, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -31,7 +32,10 @@ const QuoteCalculator = () => {
 
   const rentalDays = date?.from && date?.to ? differenceInDays(date.to, date.from) + 1 : 0;
   const subtotal = selectedTools.reduce((acc, tool) => acc + tool.pricePerDay, 0);
-  const total = subtotal * rentalDays;
+  const discount = calculateDiscount(rentalDays);
+  const discountAmount = subtotal * rentalDays * discount;
+  const total = (subtotal * rentalDays) - discountAmount;
+  const discountText = getDiscountText(rentalDays);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,6 +49,8 @@ const QuoteCalculator = () => {
       tools: selectedTools.map(t => t.name),
       startDate: date?.from,
       endDate: date?.to,
+      subtotal,
+      discount: discountAmount,
       total,
     });
 
@@ -164,10 +170,28 @@ const QuoteCalculator = () => {
                                     <span className="text-muted-foreground">Días de arriendo:</span>
                                     <span className="font-bold text-white">{rentalDays}</span>
                                 </div>
+                                {discount > 0 && (
+                                  <>
+                                    <div className="flex justify-between text-lg">
+                                        <span className="text-muted-foreground">Subtotal sin descuento:</span>
+                                        <span className="text-white">${(subtotal * rentalDays).toLocaleString('es-CL')}</span>
+                                    </div>
+                                    <div className="flex justify-between text-lg text-green-400">
+                                        <span className="flex items-center gap-2">
+                                          <Tag className="h-4 w-4" />
+                                          Descuento ({(discount * 100)}%):
+                                        </span>
+                                        <span className="font-bold">-${discountAmount.toLocaleString('es-CL')}</span>
+                                    </div>
+                                  </>
+                                )}
                                 <div className="flex justify-between items-baseline text-2xl sm:text-3xl">
                                     <span className="font-bold text-white">Total Estimado:</span>
                                     <span className="font-bold text-brand-yellow">${total.toLocaleString('es-CL')}</span>
                                 </div>
+                                {discountText && (
+                                  <p className="text-green-400 text-center font-semibold">{discountText}</p>
+                                )}
                             </div>
                             
                             <Button type="submit" size="lg" className="w-full mt-8 text-lg py-7">
@@ -179,6 +203,9 @@ const QuoteCalculator = () => {
                 )}
             </div>
         </section>
+
+        {/* FAQ Section */}
+        <FAQ />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, GitCompareArrows, SendHorizonal, Clock, BadgePercent, Users } from 'lucide-react';
 import Testimonials from '@/components/Testimonials';
+import FAQ from '@/components/FAQ';
 
 const Home = () => {
   return (
@@ -75,6 +76,9 @@ const Home = () => {
       
       {/* Testimonials Section */}
       <Testimonials />
+
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* CTA Secundario Section */}
       <section className="py-20 bg-secondary">
