@@ -76,7 +76,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative hero-bg bg-cover bg-center bg-no-repeat text-white py-32 px-4 sm:px-6 lg:px-8">
+      <section className="relative hero-bg text-white py-32 px-4 sm:px-6 lg:px-8 min-h-[80vh] flex items-center">
         <div className="container mx-auto text-center">
           <div className="max-w-4xl mx-auto animate-fade-in-up">
             <h1 className="text-4xl md:text-6xl font-extrabold font-heading mb-6 text-white">
@@ -91,7 +91,7 @@ const Home = () => {
             <p className="text-xl mb-12 text-white/90 max-w-2xl mx-auto">
               Herramientas profesionales sin inversión inicial. Paga solo por los días que las necesitas.
             </p>
-            <Button asChild size="lg" className="bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold text-lg px-8 py-4">
+            <Button asChild size="lg" className="bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold text-lg px-8 py-4 animate-scale-in animate-delay-300">
               <Link to="/catalogo">
                 Cotiza aquí
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -153,9 +153,9 @@ const Home = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {tools.map((tool, index) => (
-              <Card key={index} className="bg-card border-border animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
+              <Card key={index} className="bg-card border-border animate-fade-in-up hover:scale-105 transition-transform duration-300" style={{ animationDelay: `${index * 100}ms` }}>
                 <CardContent className="p-6">
-                  <img src={tool.image} alt={tool.name} className="w-full h-32 object-cover mb-4 rounded" />
+                  <img src={tool.image} alt={tool.name} className="w-full h-32 object-cover mb-4 rounded bg-muted" />
                   <h3 className="font-bold mb-2">{tool.name}</h3>
                   <p className="text-dmac-yellow font-bold">${tool.price.toLocaleString('es-CL')} / día</p>
                 </CardContent>
@@ -163,7 +163,7 @@ const Home = () => {
             ))}
           </div>
           <div className="text-center animate-fade-in-up">
-            <Button asChild size="lg" variant="outline" className="border-dmac-yellow text-dmac-yellow hover:bg-dmac-yellow hover:text-black">
+            <Button asChild size="lg" variant="outline" className="border-dmac-yellow text-dmac-yellow hover:bg-dmac-yellow hover:text-black transition-all duration-300">
               <Link to="/catalogo">
                 Ver Catálogo Completo
                 <Wrench className="ml-2 h-5 w-5" />
@@ -187,7 +187,7 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <div key={index} className="text-center animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
-                <div className="bg-dmac-yellow text-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
+                <div className="bg-dmac-yellow text-black w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold hover:scale-110 transition-transform duration-300">
                   {step.number}
                 </div>
                 <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
@@ -208,7 +208,7 @@ const Home = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="text-center animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
+              <div key={index} className="text-center animate-fade-in-up hover:scale-105 transition-transform duration-300" style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="mb-4">{benefit.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
                 <p className="text-muted-foreground">{benefit.description}</p>
@@ -230,7 +230,7 @@ const Home = () => {
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
             Obtén tu cotización personalizada y descubre cómo DMAC puede garantizar el avance de tu obra
           </p>
-          <Button asChild size="lg" className="bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold text-lg px-8 py-4">
+          <Button asChild size="lg" className="bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold text-lg px-8 py-4 hover:scale-105 transition-all duration-300">
             <Link to="/catalogo">
               Cotiza aquí
               <Calendar className="ml-2 h-5 w-5" />
