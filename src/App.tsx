@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Catalog from "./pages/Catalog";
 import About from "./pages/About";
+import { QuoteProvider } from "./contexts/QuoteContext"; // Import QuoteProvider
 
 const queryClient = new QueryClient();
 
@@ -19,9 +20,10 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen flex flex-col bg-brand-dark">
-          <Header />
-          <main className="flex-grow">
+        <QuoteProvider> {/* Wrap with QuoteProvider */}
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/catalogo" element={<Catalog />} />
@@ -30,7 +32,8 @@ const App = () => (
             </Routes>
           </main>
           <Footer />
-        </div>
+          </div>
+        </QuoteProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

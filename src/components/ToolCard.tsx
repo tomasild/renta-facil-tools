@@ -1,52 +1,62 @@
-
 import { Tool } from '@/data/tools';
 import { Button } from '@/components/ui/button';
 import { PlusCircle, MinusCircle } from 'lucide-react';
+import { formatCurrencyCLP } from '@/lib/utils';
+import { Link } from 'react-router-dom';
+import { useQuote } from '@/contexts/QuoteContext'; // Import useQuote
 
 interface ToolCardProps {
   tool: Tool;
-  onAdd: (tool: Tool) => void;
-  onRemove: (tool: Tool) => void;
-  isSelected: boolean;
+  // onAdd, onRemove, isSelected props are removed as context will be used
 }
 
-const ToolCard = ({ tool, onAdd, onRemove, isSelected }: ToolCardProps) => {
+const ToolCard = ({ tool }: ToolCardProps) => { // Props simplified
+  const { addToQuote, removeFromQuote, isToolInQuote } = useQuote();
+  const isSelected = isToolInQuote(tool.id); // Get status from context
+
   const handleToggle = () => {
     if (isSelected) {
-      onRemove(tool);
+      removeFromQuote(tool.id);
     } else {
-      onAdd(tool);
+      addToQuote(tool); // tool object itself
     }
   };
 
   return (
-    <article className="bg-secondary rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 border-2 border-transparent focus-within:border-brand-yellow focus-within:ring-2 focus-within:ring-brand-yellow flex flex-col">
-      <img src={tool.imageUrl} alt={tool.name} className="w-full h-48 object-cover bg-gray-700" />
-      <div className="p-3 sm:p-4 flex flex-col flex-grow">
-        <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{tool.name}</h3>
-        <p className="text-muted-foreground text-sm mb-4 flex-grow">{tool.description}</p>
+    <article className="bg-card rounded-lg overflow-hidden shadow-md transition-shadow hover:shadow-lg flex flex-col border border-border focus-within:ring-2 focus-within:ring-ring">
+      <img
+        src={tool.imageUrl || '/placeholder.svg'}
+        alt={`${tool.name} - herramienta-arriendo-valparaiso`}
+        className="w-full h-48 object-contain bg-muted"
+      />
+      <div className="p-4 flex flex-col flex-grow">
+        <h3 className="text-lg font-semibold text-foreground mb-2">{tool.name}</h3>
+        <p className="text-muted-foreground text-sm mb-4 flex-grow line-clamp-3">
+          {tool.description || 'Descripción no disponible.'}
+        </p>
         
-        <div className="mt-auto pt-3 sm:pt-4 border-t border-gray-700/50">
-          <div className="flex justify-between items-center mb-3 sm:mb-4">
-            <p className="text-xl sm:text-2xl font-bold text-brand-yellow">
-              ${tool.pricePerDay.toLocaleString('es-CL')}
-              <span className="text-xs sm:text-sm font-normal text-muted-foreground">/día</span>
+        <div className="mt-auto pt-4 border-t border-border">
+          <div className="flex justify-between items-center mb-4">
+            <p className="text-lg font-bold text-highlight-red">
+              {formatCurrencyCLP(tool.pricePerDayCLP)}
+              <span className="text-sm text-muted-foreground font-normal"> / día</span>
             </p>
           </div>
+          {/* Button now uses context directly */}
           <Button
             onClick={handleToggle}
-            variant={isSelected ? "secondary" : "default"}
-            className="w-full font-bold flex items-center justify-center gap-2"
-            size="lg"
+            variant={isSelected ? "outline" : "default"}
+            className="w-full font-semibold flex items-center justify-center gap-2"
+            size="default"
             aria-label={isSelected ? `Quitar ${tool.name} de la cotización` : `Añadir ${tool.name} a la cotización`}
           >
             {isSelected ? (
               <>
-                <MinusCircle className="h-5 w-5" /> Quitar
+                <MinusCircle /> Quitar de Cotización
               </>
             ) : (
               <>
-                <PlusCircle className="h-5 w-5" /> Añadir
+                <PlusCircle /> Agregar a Cotización
               </>
             )}
           </Button>

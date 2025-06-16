@@ -29,6 +29,8 @@ export default {
         'amarillo-seguridad': '#FEF800', // Replaces brand-yellow
         'blanco': '#FFFFFF',
         'gris-claro': '#F3F4F6',
+        'highlight-red': 'hsl(var(--highlight-red))',
+        'highlight-red-foreground': 'hsl(var(--highlight-red-foreground))',
         'brand-dark': '#1A1A1A', // Keeping brand-dark for now
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

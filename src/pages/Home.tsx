@@ -2,8 +2,9 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { tools, Tool } from '@/data/tools'; // Assuming Tool interface is also exported if needed here, or rely on type inference.
-import { PhoneCall, CalendarCheck, MapPin, Truck, TrendingUp, Zap, ShieldCheck, Settings, Users, PackageCheck, Wind } from 'lucide-react'; // Added more icons
+import { tools, Tool } from '@/data/tools';
+import ToolCard from '@/components/ToolCard'; // Import the consolidated ToolCard
+import { PhoneCall, CalendarCheck, MapPin, Truck, TrendingUp, Zap, ShieldCheck, Settings, Users, PackageCheck, Wind } from 'lucide-react';
 
 const Home = () => {
   const featuredTools = tools.slice(0, 4); // Show 4 featured tools
@@ -95,30 +96,31 @@ const Home = () => {
       <section className="bg-gris-claro text-center py-16 sm:py-20 md:py-28 px-4 sm:px-6 lg:px-8">
         {/* Optional: Add a subtle background pattern or image if desired, but keep it light */}
         <div className="container mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-heading leading-tight mb-6 text-gray-800">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-heading leading-tight mb-6 text-foreground">
             Arriendo de herramientas para la construcción <br className="hidden sm:block" />
-            <span className="text-rojo-dmac">Región de Valparaíso</span>
+            <span className="text-highlight-red">Región de Valparaíso</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-2xl md:text-3xl text-amarillo-seguridad font-bold mb-10">
+          <p className="max-w-2xl mx-auto text-2xl md:text-3xl text-primary font-bold mb-10"> {/* primary is yellow */}
             Avance Garantizado
           </p>
-          <Button asChild size="lg" className="bg-rojo-dmac hover:bg-rojo-dmac-darker text-blanco text-lg py-6 px-10">
+          {/* Default variant: yellow with black text */}
+          <Button asChild size="lg" className="text-lg py-6 px-10">
             <Link to="/catalogo">Cotiza aquí</Link>
           </Button>
         </div>
       </section>
 
       {/* Dolor-Solución (Pain-Solution) Block */}
-      <section className="py-12 sm:py-16 md:py-20 bg-blanco">
+      <section className="py-12 sm:py-16 md:py-20 bg-blanco"> {/* bg-blanco is 'background' for light theme, or use specific like 'bg-card' if appropriate */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 text-gray-800">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 text-foreground">
             Simplificamos el Arriendo de Herramientas
           </h2>
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {painSolutions.map((item, index) => (
-              <div key={index} className="p-6 border border-gray-200 rounded-lg shadow-sm">
-                <h3 className="text-xl font-semibold mb-3 text-rojo-dmac">{item.problem}</h3>
-                <p className="text-gray-600">{item.solution}</p>
+              <div key={index} className="p-6 border border-border rounded-lg shadow-sm bg-background"> {/* Use bg-background or bg-card */}
+                <h3 className="text-xl font-semibold mb-3 text-highlight-red">{item.problem}</h3>
+                <p className="text-muted-foreground">{item.solution}</p>
               </div>
             ))}
           </div>
@@ -126,40 +128,30 @@ const Home = () => {
       </section>
 
       {/* Propuesta de Valor (Value Proposition) Phrase */}
-      <section className="py-12 sm:py-16 bg-gris-claro">
+      <section className="py-12 sm:py-16 bg-secondary"> {/* bg-gris-claro is bg-secondary */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 max-w-3xl mx-auto leading-tight">
-            Transforma tus Proyectos con Herramientas Adecuadas, <span className="text-rojo-dmac">Sin Complicaciones.</span>
+          <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground max-w-3xl mx-auto leading-tight">
+            Transforma tus Proyectos con Herramientas Adecuadas, <span className="text-highlight-red">Sin Complicaciones.</span>
           </p>
         </div>
       </section>
 
       {/* Vista Previa del Catálogo (Catalog Preview) */}
-      <section className="py-12 sm:py-16 md:py-20 bg-blanco">
+      <section className="py-12 sm:py-16 md:py-20 bg-background"> {/* or bg-blanco */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 text-gray-800">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 text-foreground">
             Explora Nuestras Herramientas Destacadas
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {featuredTools.map((tool: Tool) => ( // Explicitly type tool
-              <div key={tool.id} className="border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-                <img
-                  src={tool.imageUrl}
-                  alt={`${tool.name} - herramienta-arriendo-valparaiso`}
-                  className="w-full h-40 object-contain mb-4 rounded bg-gray-100"
-                />
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">{tool.name}</h3>
-                {/* <p className="text-sm text-gray-500 mb-3">{tool.description.substring(0,50)}...</p> */}
-                {/* <p className="text-rojo-dmac font-bold mb-3">${tool.pricePerDay.toLocaleString('es-CL')} / día</p> */}
-                <Button asChild variant="outline" size="sm" className="border-rojo-dmac text-rojo-dmac hover:bg-rojo-dmac hover:text-blanco">
-                  <Link to={`/catalogo`}>Ver más</Link>
-                  {/* Ideally, link to /catalogo/tool.id or similar */}
-                </Button>
-              </div>
+            {featuredTools.map((tool) => (
+              // Using the ToolCard component for display.
+              // onAdd, onRemove, isSelected are not passed, so it will show "Ver Detalles"
+              <ToolCard key={tool.id} tool={tool} />
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button asChild size="lg" className="bg-rojo-dmac hover:bg-rojo-dmac-darker text-blanco">
+            {/* Default variant: yellow with black text */}
+            <Button asChild size="lg">
               <Link to="/catalogo">Ver Catálogo Completo</Link>
             </Button>
           </div>
@@ -167,15 +159,15 @@ const Home = () => {
       </section>
 
       {/* Cómo Funciona Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gris-claro">
+      <section className="py-12 sm:py-16 md:py-20 bg-secondary"> {/* bg-gris-claro is bg-secondary */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-12 sm:mb-16 text-gray-800">¿Cómo Arrendar con DMAC?</h2>
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8 text-left">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-12 sm:mb-16 text-foreground">¿Cómo Arrendar con DMAC?</h2>
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8"> {/* Removed text-left, already centered by inner div */}
             {howItWorksSteps.map((step, index) => (
-              <div key={index} className="flex flex-col items-center text-center p-6 bg-blanco rounded-lg shadow-sm">
-                <step.icon className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-rojo-dmac mb-5" />
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">{step.title}</h3>
-                <p className="text-gray-600 text-sm sm:text-base">{step.description}</p>
+              <div key={index} className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-sm"> {/* bg-card or bg-background */}
+                <step.icon className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-highlight-red mb-5" />
+                <h3 className="text-xl font-semibold mb-3 text-foreground">{step.title}</h3>
+                <p className="text-muted-foreground text-sm sm:text-base">{step.description}</p>
               </div>
             ))}
           </div>
@@ -183,15 +175,15 @@ const Home = () => {
       </section>
 
       {/* Beneficios Diferenciales (Differential Benefits) Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-blanco">
+      <section className="py-12 sm:py-16 md:py-20 bg-background"> {/* or bg-blanco */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-12 sm:mb-16 text-gray-800">Ventajas de Elegir DMAC</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-left">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-12 sm:mb-16 text-foreground">Ventajas de Elegir DMAC</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"> {/* Removed text-left */}
             {differentialBenefits.map((benefit, index) => (
-              <div key={index} className="p-6 bg-gris-claro rounded-lg shadow-sm">
-                <benefit.icon className="w-10 h-10 text-rojo-dmac mb-4" />
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">{benefit.title}</h3>
-                <p className="text-gray-600 text-sm">{benefit.description}</p>
+              <div key={index} className="p-6 bg-secondary rounded-lg shadow-sm text-center"> {/* bg-secondary (gris-claro), added text-center */}
+                <benefit.icon className="w-10 h-10 text-highlight-red mb-4 mx-auto" /> {/* Added mx-auto for icon centering */}
+                <h3 className="text-lg font-semibold mb-2 text-foreground">{benefit.title}</h3>
+                <p className="text-muted-foreground text-sm">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -199,14 +191,14 @@ const Home = () => {
       </section>
       
       {/* FAQ Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gris-claro">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl"> {/* Max width for FAQ readability */}
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 text-gray-800">Preguntas Frecuentes</h2>
+      <section className="py-12 sm:py-16 md:py-20 bg-secondary"> {/* bg-gris-claro is bg-secondary */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16 text-foreground">Preguntas Frecuentes</h2>
           <Accordion type="single" collapsible className="w-full">
             {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index + 1}`} className="border-b-gray-300">
-                <AccordionTrigger className="text-lg font-medium text-gray-800 hover:text-rojo-dmac text-left">{item.question}</AccordionTrigger>
-                <AccordionContent className="text-gray-600 pt-2 pb-4">
+              <AccordionItem key={index} value={`item-${index + 1}`} className="border-border"> {/* Use theme border */}
+                <AccordionTrigger className="text-lg font-medium text-foreground hover:text-highlight-red text-left">{item.question}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pt-2 pb-4">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -216,12 +208,13 @@ const Home = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 sm:py-20 md:py-28 bg-amarillo-seguridad">
+      <section className="py-16 sm:py-20 md:py-28 bg-primary"> {/* amarillo-seguridad is primary */}
         <div className="container mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-black">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-primary-foreground"> {/* text-primary-foreground is black */}
             ¿Listo para Avanzar en tu Proyecto?
           </h2>
-          <Button asChild size="lg" className="bg-rojo-dmac hover:bg-rojo-dmac-darker text-blanco text-lg py-6 px-10">
+          {/* Default variant: yellow with black text */}
+          <Button asChild size="lg" className="text-lg py-6 px-10">
             <Link to="/catalogo">Cotiza aquí</Link>
           </Button>
         </div>

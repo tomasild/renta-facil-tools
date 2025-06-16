@@ -5,45 +5,75 @@
 
 @layer base {
   :root {
-    /* New DMAC Light Theme Palette */
+    /* Updated DMAC Light Theme Palette */
     --background: 0 0% 100%; /* blanco #FFFFFF */
-    --foreground: 240 10% 3.9%; /* dark gray #0A0A0A - for text on white */
+    --foreground: 0 0% 0%; /* black #000000 */
 
     --card: 0 0% 100%; /* blanco */
-    --card-foreground: 240 10% 3.9%; /* dark gray */
+    --card-foreground: 0 0% 0%; /* black for text on white cards */
 
     --popover: 0 0% 100%; /* blanco */
-    --popover-foreground: 240 10% 3.9%; /* dark gray */
+    --popover-foreground: 0 0% 0%; /* black for text on white popovers */
 
-    --primary: 355 96% 38%; /* rojo-dmac #BF0411 */
-    --primary-foreground: 0 0% 100%; /* blanco #FFFFFF */
+    --primary: 58 100% 50%; /* amarillo-seguridad #FEF800 */
+    --primary-foreground: 0 0% 0%; /* black for text on amarillo-seguridad */
 
-    /* Using a slightly off-white/very light gray for secondary backgrounds like cards or sections */
-    /* gris-claro #F3F4F6 is HSL 210 40% 96.1%. Let's use that for secondary. */
+    --highlight-red: 355 96% 38%; /* rojo-dmac #BF0411 */
+    --highlight-red-foreground: 0 0% 100%; /* white for text on rojo-dmac */
+
     --secondary: 210 40% 96.1%; /* gris-claro #F3F4F6 */
-    --secondary-foreground: 240 10% 3.9%; /* dark gray for text on gris-claro */
+    --secondary-foreground: 0 0% 0%; /* black for text on gris-claro */
 
-    /* Muted usually for less prominent text or elements */
     --muted: 210 40% 90%; /* A slightly darker shade of gris-claro for muted elements */
-    --muted-foreground: 240 5% 45%; /* A softer dark gray for muted text */
+    --muted-foreground: 0 0% 20%; /* A darker gray (closer to black) for muted text */
 
-    --accent: 58 100% 50%; /* amarillo-seguridad #FEF800 */
+    --accent: 58 100% 50%; /* amarillo-seguridad #FEF800 - same as primary for this theme */
     --accent-foreground: 0 0% 0%; /* black for text on amarillo-seguridad */
 
-    /* Destructive actions (e.g. delete buttons) */
-    /* Using a slightly less intense red than primary for destructive, but still strong */
     --destructive: 0 75% 50%; /* A clear, but not overwhelming red */
     --destructive-foreground: 0 0% 100%; /* blanco */
 
     --border: 210 20% 88%; /* A visible border, slightly darker than gris-claro. (e.g. #DDE1E6) */
     --input: 210 20% 92%; /* Slightly lighter than border for input fields background (e.g. #E9ECEF) */
-    --ring: 355 96% 38%; /* rojo-dmac for focus rings, consistent with primary actions */
+    --ring: 58 100% 50%; /* amarillo-seguridad for focus rings */
 
     --radius: 0.5rem;
   }
 
-  /* No dark mode override needed as default is now light.
-     If dark mode is desired later, a .dark class with variable overrides would be added. */
+  .dark {
+    --background: 240 10% 3.9%; /* Dark Gray/Almost Black */
+    --foreground: 0 0% 98%;    /* Light Gray/Almost White (for text) */
+
+    --card: 240 10% 6.9%; /* Slightly lighter than background for cards */
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 6.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary (yellow buttons) can often remain the same, check aesthetics */
+    --primary: 58 100% 50%; /* amarillo-seguridad */
+    --primary-foreground: 0 0% 0%; /* black */
+    /* Or, if yellow is too stark on dark, a slightly desaturated yellow or different dark mode primary */
+
+    --highlight-red: 355 96% 38%; /* rojo-dmac - can remain same */
+    --highlight-red-foreground: 0 0% 100%; /* white */
+
+    --secondary: 240 3.7% 15.9%; /* Darker gray for secondary elements */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%; /* Lighter gray for muted text on dark backgrounds */
+
+    --accent: 58 100% 50%; /* amarillo-seguridad */
+    --accent-foreground: 0 0% 0%; /* black */
+
+    --destructive: 0 62.8% 30.6%; /* Default destructive from shadcn dark */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 58 100% 50%; /* yellow for focus rings in dark mode */
+  }
 }
 
 @layer base {
