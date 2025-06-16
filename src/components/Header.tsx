@@ -25,7 +25,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6">
           {navLinks.map((link) => (
             <NavLink
               key={link.href}
@@ -50,15 +50,15 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden absolute top-full left-0 w-full bg-brand-dark border-b border-gray-800 overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-96' : 'max-h-0'}`}>
-          <nav className="container mx-auto flex flex-col items-center gap-4 py-6">
+      <div className={`md:hidden absolute top-full left-0 w-full bg-brand-dark border-b border-gray-800 transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-96 overflow-y-auto' : 'max-h-0 overflow-hidden'}`}>
+          <nav className="flex flex-col items-center gap-2 py-6 px-4">
               {navLinks.map((link) => (
               <NavLink
                 key={link.href}
                 to={link.href}
                 onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) =>
-                  `text-lg font-medium transition-colors hover:text-brand-yellow w-full text-center py-3 rounded-md ${
+                  `text-base sm:text-lg font-medium transition-colors hover:text-brand-yellow w-full text-center py-3 sm:py-4 rounded-md ${ // slightly adjusted py and text size
                     isActive ? 'text-brand-yellow bg-secondary' : 'text-gray-300'
                   }`
                 }
@@ -66,7 +66,7 @@ const Header = () => {
                 {link.title}
               </NavLink>
             ))}
-             <Button asChild className="w-full mt-4" size="lg">
+             <Button asChild className="w-full mt-3 sm:mt-4" size="lg"> {/* Adjusted mt */}
                   <Link to="/catalogo" onClick={() => setIsMenuOpen(false)}>Cotizar Ahora</Link>
               </Button>
           </nav>

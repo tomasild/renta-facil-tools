@@ -57,14 +57,17 @@ const QuoteCalculator = () => {
   };
 
   return (
-    <div id="cotizador" className="py-16 sm:py-24 animate-fade-in-up">
+    <div id="cotizador" className="py-12 sm:py-16 md:py-20 animate-fade-in-up"> {/* Adjusted padding to match other pages */}
       <div className="container mx-auto">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-center mb-8 sm:mb-10 md:mb-12 text-white">
+          Catálogo de Herramientas
+        </h1>
         <section aria-labelledby="tool-selection-title">
-            <h2 id="tool-selection-title" className="text-3xl sm:text-4xl font-bold text-center mb-4 text-white">1. Elige tus Herramientas</h2>
-            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            <h2 id="tool-selection-title" className="text-2xl sm:text-3xl font-bold text-center mb-4 text-white">1. Elige tus Herramientas</h2>
+            <p className="text-center text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto"> {/* Adjusted margins */}
               Selecciona los equipos que necesitas. Puedes agregar o quitar herramientas en cualquier momento.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
               {tools.map((tool, index) => (
                 <div key={tool.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
                   <ToolCard
@@ -78,23 +81,23 @@ const QuoteCalculator = () => {
             </div>
         </section>
 
-        <section aria-labelledby="quote-summary-title" className="mt-24 sticky top-10">
-            <div className="bg-secondary rounded-xl p-8 shadow-2xl border border-gray-800">
-                <h2 id="quote-summary-title" className="text-3xl sm:text-4xl font-bold text-center mb-8 text-white">2. Revisa y Envía tu Cotización</h2>
+        <section aria-labelledby="quote-summary-title" className="mt-16 sm:mt-24 sticky top-10">
+            <div className="bg-secondary rounded-xl p-4 sm:p-6 md:p-8 shadow-2xl border border-gray-800">
+                <h2 id="quote-summary-title" className="text-3xl sm:text-4xl font-bold text-center mb-6 sm:mb-8 text-white">2. Revisa y Envía tu Cotización</h2>
                 
                 {selectedTools.length === 0 ? (
-                    <p className="text-center text-muted-foreground py-12">Aún no has seleccionado herramientas. Tu cotización aparecerá aquí.</p>
+                    <p className="text-center text-muted-foreground py-10 sm:py-12">Aún no has seleccionado herramientas. Tu cotización aparecerá aquí.</p>
                 ) : (
-                    <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
                         <div>
-                            <h3 className="text-xl font-bold mb-4 text-white">Resumen de Herramientas</h3>
-                            <ul className="space-y-3 mb-6">
+                            <h3 className="text-xl font-bold mb-3 sm:mb-4 text-white">Resumen de Herramientas</h3>
+                            <ul className="space-y-2 sm:space-y-3 mb-5 sm:mb-6">
                                 {selectedTools.map(tool => (
                                     <li key={tool.id} className="flex justify-between items-center bg-brand-dark p-3 rounded-md">
                                         <span className="text-white">{tool.name}</span>
                                         <div className="flex items-center gap-4">
                                           <span className="font-semibold text-white">${tool.pricePerDay.toLocaleString('es-CL')} / día</span>
-                                          <Button variant="ghost" size="icon" className="text-red-500 hover:bg-red-900/50" onClick={() => handleRemoveTool(tool)}>
+                                          <Button variant="ghost" size="icon" className="text-red-500 hover:bg-red-900/50" onClick={() => handleRemoveTool(tool)} aria-label={`Quitar ${tool.name} de la cotización`}>
                                             <Trash2 className="h-5 w-5" />
                                           </Button>
                                         </div>
@@ -135,7 +138,7 @@ const QuoteCalculator = () => {
                                     defaultMonth={date?.from}
                                     selected={date}
                                     onSelect={setDate}
-                                    numberOfMonths={2}
+                                    numberOfMonths={1} // Changed for better mobile view
                                     locale={es}
                                     disabled={{ before: new Date() }}
                                 />
@@ -144,34 +147,34 @@ const QuoteCalculator = () => {
                         </div>
                         <div className="bg-brand-dark p-8 rounded-lg">
                             <h3 className="text-xl font-bold mb-6 text-white">Completa tus datos</h3>
-                            <div className="space-y-6 mb-6">
+                            <div className="space-y-5 sm:space-y-6 mb-5 sm:mb-6">
                                 <div>
-                                    <Label htmlFor="name" className="text-lg">Nombre Completo</Label>
-                                    <Input id="name" name="name" type="text" placeholder="Tu nombre y apellido" required className="text-lg p-6"/>
+                                    <Label htmlFor="name" className="text-base sm:text-lg">Nombre Completo</Label>
+                                    <Input id="name" name="name" type="text" placeholder="Tu nombre y apellido" required className="text-base sm:text-lg p-3 sm:p-4 md:p-6"/>
                                 </div>
                                 <div>
-                                    <Label htmlFor="email" className="text-lg">Correo Electrónico</Label>
-                                    <Input id="email" name="email" type="email" placeholder="tu.correo@ejemplo.com" required className="text-lg p-6"/>
+                                    <Label htmlFor="email" className="text-base sm:text-lg">Correo Electrónico</Label>
+                                    <Input id="email" name="email" type="email" placeholder="tu.correo@ejemplo.com" required className="text-base sm:text-lg p-3 sm:p-4 md:p-6"/>
                                 </div>
                             </div>
 
-                            <div className="border-t border-gray-700 pt-6 space-y-4">
-                                <div className="flex justify-between text-lg">
+                            <div className="border-t border-gray-700 pt-5 sm:pt-6 space-y-3 sm:space-y-4">
+                                <div className="flex justify-between text-base sm:text-lg">
                                     <span className="text-muted-foreground">Subtotal diario:</span>
                                     <span className="font-bold text-white">${subtotal.toLocaleString('es-CL')}</span>
                                 </div>
-                                 <div className="flex justify-between text-lg">
+                                 <div className="flex justify-between text-base sm:text-lg">
                                     <span className="text-muted-foreground">Días de arriendo:</span>
                                     <span className="font-bold text-white">{rentalDays}</span>
                                 </div>
-                                <div className="flex justify-between items-baseline text-2xl sm:text-3xl">
+                                <div className="flex justify-between items-baseline text-xl sm:text-2xl md:text-3xl">
                                     <span className="font-bold text-white">Total Estimado:</span>
                                     <span className="font-bold text-brand-yellow">${total.toLocaleString('es-CL')}</span>
                                 </div>
                             </div>
                             
-                            <Button type="submit" size="lg" className="w-full mt-8 text-lg py-7">
-                                <Send className="mr-2 h-5 w-5"/>
+                            <Button type="submit" size="lg" className="w-full mt-6 sm:mt-8 text-base sm:text-lg py-5 sm:py-6 md:py-7">
+                                <Send className="mr-2 h-4 w-4 sm:h-5 sm:w-5"/>
                                 Enviar Cotización
                             </Button>
                         </div>

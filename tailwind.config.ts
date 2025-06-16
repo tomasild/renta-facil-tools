@@ -13,7 +13,7 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '2rem',
+			padding: '1rem', // Adjusted for better mobile padding
 			screens: {
 				'2xl': '1400px'
 			}
