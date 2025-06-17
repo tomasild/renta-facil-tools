@@ -1,3 +1,4 @@
+
 import { HardHat, Menu, X, Instagram, Linkedin } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
@@ -46,7 +47,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-dmac-red py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50 border-b border-dmac-red-hover" role="banner">
+    <header className="bg-gray-900 py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50 border-b border-gray-700" role="banner">
       <a href="#main-content" className="skip-link">
         Saltar al contenido principal
       </a>
@@ -54,7 +55,7 @@ const Header = () => {
         <Link 
           to="/" 
           onClick={() => setIsMenuOpen(false)} 
-          className="flex items-center gap-3 text-white hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md p-1"
+          className="flex items-center gap-3 text-white hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md p-1"
           aria-label="DMAC - Arriendo de herramientas - Ir al inicio"
         >
           <img 
@@ -80,7 +81,7 @@ const Header = () => {
               key={link.href}
               to={link.href}
               className={({ isActive }) =>
-                `text-base font-medium transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md px-2 py-1 ${
+                `text-base font-medium transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md px-2 py-1 ${
                   isActive ? 'text-white font-bold' : 'text-white/90'
                 }`
               }
@@ -98,7 +99,7 @@ const Header = () => {
                 key={social.type}
                 href={social.href}
                 aria-label={social.label}
-                className="text-white hover:text-white/80 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md p-1"
+                className="text-white hover:text-white/80 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md p-1"
               >
                 <SocialIcon type={social.type} />
               </a>
@@ -106,7 +107,7 @@ const Header = () => {
           </div>
           <Button 
             asChild 
-            className="bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red"
+            className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
           >
             <Link to="/catalogo">Cotiza aquí</Link>
           </Button>
@@ -121,7 +122,7 @@ const Header = () => {
             aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
-            className="text-white hover:text-white hover:bg-white/10 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red"
+            className="text-white hover:text-white hover:bg-white/10 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
           >
             {isMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
           </Button>
@@ -131,7 +132,7 @@ const Header = () => {
       {/* Mobile Menu */}
       <div 
         id="mobile-menu"
-        className={`lg:hidden absolute top-full left-0 w-full bg-dmac-red border-b border-dmac-red-hover overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`lg:hidden absolute top-full left-0 w-full bg-gray-900 border-b border-gray-700 overflow-hidden transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
         aria-hidden={!isMenuOpen}
@@ -143,7 +144,7 @@ const Header = () => {
               to={link.href}
               onClick={() => setIsMenuOpen(false)}
               className={({ isActive }) =>
-                `text-lg font-medium transition-colors hover:text-white w-full text-center py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red ${
+                `text-lg font-medium transition-colors hover:text-white w-full text-center py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 ${
                   isActive ? 'text-white bg-white/10 font-bold' : 'text-white/90'
                 }`
               }
@@ -159,7 +160,7 @@ const Header = () => {
                 key={social.type}
                 href={social.href}
                 aria-label={social.label}
-                className="text-white hover:text-white/80 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md p-1"
+                className="text-white hover:text-white/80 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900 rounded-md p-1"
               >
                 <SocialIcon type={social.type} />
               </a>
@@ -168,7 +169,7 @@ const Header = () => {
           
           <Button 
             asChild 
-            className="w-full mt-4 bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red" 
+            className="w-full mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
             size="lg"
           >
             <Link to="/catalogo" onClick={() => setIsMenuOpen(false)}>Cotiza aquí</Link>

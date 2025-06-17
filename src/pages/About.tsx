@@ -40,18 +40,18 @@ const About = () => {
       <main id="main-content">
         {/* Hero Section */}
         <section 
-          className="bg-dmac-red text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8"
+          className="bg-gray-900 text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8"
           role="banner"
           aria-labelledby="about-hero-heading"
         >
           <div className="container mx-auto text-center animate-fade-in-up">
             <h1 id="about-hero-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading mb-4">
-              Sobre <span className="text-dmac-yellow">DMAC</span>
+              Sobre <span className="text-yellow-400">DMAC</span>
             </h1>
             <p className="text-lg sm:text-xl max-w-3xl mx-auto text-white/90">
               Arriendo de herramientas profesionales para la construcción en la Región de Valparaíso
             </p>
-            <p className="text-xl sm:text-2xl font-bold text-dmac-yellow mt-4">
+            <p className="text-xl sm:text-2xl font-bold text-yellow-400 mt-4">
               Avance Garantizado
             </p>
           </div>
@@ -61,7 +61,7 @@ const About = () => {
         <section className="py-16 bg-white" aria-labelledby="company-description">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-              <h2 id="company-description" className="text-2xl sm:text-3xl font-bold mb-6 text-dmac-red">¿Quiénes Somos?</h2>
+              <h2 id="company-description" className="text-2xl sm:text-3xl font-bold mb-6 text-red-600">¿Quiénes Somos?</h2>
               <p className="text-base sm:text-lg text-gray-600 mb-6">
                 DMAC es la empresa líder en arriendo de herramientas profesionales para la construcción en la Región de Valparaíso. 
                 Transformamos la manera en que los profesionales acceden a equipamiento especializado, eliminando las barreras de 
@@ -123,52 +123,52 @@ const About = () => {
         <section className="py-16 bg-gray-50" aria-labelledby="value-proposition">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
-              <h2 id="value-proposition" className="text-2xl sm:text-3xl font-bold mb-6 text-dmac-red">Nuestra Propuesta de Valor</h2>
-              <div className="bg-dmac-yellow p-6 sm:p-8 rounded-lg">
+              <h2 id="value-proposition" className="text-2xl sm:text-3xl font-bold mb-6 text-red-600">Nuestra Propuesta de Valor</h2>
+              <div className="bg-yellow-400 p-6 sm:p-8 rounded-lg">
                 <h3 className="text-xl sm:text-2xl font-bold mb-6 text-black">
                   Transforma tus proyectos con nuestro Avance Garantizado:
                 </h3>
                 <BentoGrid className="text-left">
                   <BentoItem className="bg-white">
                     <div className="flex items-start gap-3">
-                      <div className="bg-dmac-red w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="bg-red-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                         <span className="text-white text-sm font-bold">✓</span>
                       </div>
                       <div>
-                        <h4 className="font-bold text-dmac-red mb-1">Ahorro inmediato del 40%</h4>
+                        <h4 className="font-bold text-red-600 mb-1">Ahorro inmediato del 40%</h4>
                         <p className="text-gray-600 text-sm">Evita inversiones de capital y reduce costos operativos significativamente</p>
                       </div>
                     </div>
                   </BentoItem>
                   <BentoItem className="bg-white">
                     <div className="flex items-start gap-3">
-                      <div className="bg-dmac-red w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="bg-red-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                         <span className="text-white text-sm font-bold">✓</span>
                       </div>
                       <div>
-                        <h4 className="font-bold text-dmac-red mb-1">Flexibilidad total</h4>
+                        <h4 className="font-bold text-red-600 mb-1">Flexibilidad total</h4>
                         <p className="text-gray-600 text-sm">Adapta tu equipamiento según las necesidades específicas de cada proyecto</p>
                       </div>
                     </div>
                   </BentoItem>
                   <BentoItem className="bg-white">
                     <div className="flex items-start gap-3">
-                      <div className="bg-dmac-red w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="bg-red-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                         <span className="text-white text-sm font-bold">✓</span>
                       </div>
                       <div>
-                        <h4 className="font-bold text-dmac-red mb-1">Cero mantenimiento</h4>
+                        <h4 className="font-bold text-red-600 mb-1">Cero mantenimiento</h4>
                         <p className="text-gray-600 text-sm">Olvídate de reparaciones, mantenimiento y almacenamiento de equipos</p>
                       </div>
                     </div>
                   </BentoItem>
                   <BentoItem className="bg-white">
                     <div className="flex items-start gap-3">
-                      <div className="bg-dmac-red w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="bg-red-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                         <span className="text-white text-sm font-bold">✓</span>
                       </div>
                       <div>
-                        <h4 className="font-bold text-dmac-red mb-1">Acceso inmediato</h4>
+                        <h4 className="font-bold text-red-600 mb-1">Acceso inmediato</h4>
                         <p className="text-gray-600 text-sm">Herramientas especializadas disponibles cuando las necesitas, sin esperas</p>
                       </div>
                     </div>
@@ -205,7 +205,7 @@ const About = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-dmac-red text-white" aria-labelledby="about-cta">
+        <section className="py-16 bg-gray-900 text-white" aria-labelledby="about-cta">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
             <h2 id="about-cta" className="text-2xl sm:text-3xl font-bold mb-4">¿Listo para tu próximo proyecto?</h2>
             <p className="text-lg sm:text-xl mb-8 text-white/90">
@@ -213,7 +213,7 @@ const About = () => {
             </p>
             <Button 
               asChild 
-              className="bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"
             >
               <Link to="/catalogo">Cotiza aquí</Link>
             </Button>

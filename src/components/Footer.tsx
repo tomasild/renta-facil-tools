@@ -35,29 +35,29 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-dmac-red border-t border-dmac-red-hover py-12 px-4 sm:px-6 lg:px-8 text-dmac-white">
+    <footer className="bg-gray-900 border-t border-gray-700 py-12 px-4 sm:px-6 lg:px-8 text-white">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Información de contacto */}
           <div className="animate-fade-in-up">
-            <h3 className="font-bold text-xl mb-4 text-dmac-yellow">DMAC</h3>
-            <p className="text-dmac-white/90 mb-4">
+            <h3 className="font-bold text-xl mb-4 text-yellow-400">DMAC</h3>
+            <p className="text-white/90 mb-4">
               Arriendo de herramientas profesionales para la construcción
             </p>
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-dmac-yellow" />
+                <MapPin className="w-4 h-4 text-yellow-400" />
                 <span className="text-sm">Región de Valparaíso, Chile</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-dmac-yellow" />
-                <a href="tel:+56912345678" className="text-sm hover:text-dmac-yellow transition-colors">
+                <Phone className="w-4 h-4 text-yellow-400" />
+                <a href="tel:+56912345678" className="text-sm hover:text-yellow-400 transition-colors">
                   +56 9 1234 5678
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-dmac-yellow" />
-                <a href="mailto:contacto@dmac.cl" className="text-sm hover:text-dmac-yellow transition-colors">
+                <Mail className="w-4 h-4 text-yellow-400" />
+                <a href="mailto:contacto@dmac.cl" className="text-sm hover:text-yellow-400 transition-colors">
                   contacto@dmac.cl
                 </a>
               </div>
@@ -66,18 +66,18 @@ const Footer = () => {
 
           {/* Enlaces rápidos */}
           <div className="animate-fade-in-up [animation-delay:0.2s]">
-            <h4 className="font-bold text-lg mb-4 text-dmac-yellow">Enlaces Rápidos</h4>
+            <h4 className="font-bold text-lg mb-4 text-yellow-400">Enlaces Rápidos</h4>
             <div className="space-y-2">
-              <a href="/catalogo" className="block text-sm hover:text-dmac-yellow transition-colors">
+              <a href="/catalogo" className="block text-sm hover:text-yellow-400 transition-colors">
                 Catálogo de Herramientas
               </a>
-              <a href="/sobre-nosotros" className="block text-sm hover:text-dmac-yellow transition-colors">
+              <a href="/sobre-nosotros" className="block text-sm hover:text-yellow-400 transition-colors">
                 Sobre Nosotros
               </a>
-              <a href="#" className="block text-sm hover:text-dmac-yellow transition-colors">
+              <a href="#" className="block text-sm hover:text-yellow-400 transition-colors">
                 Términos y Condiciones
               </a>
-              <a href="#" className="block text-sm hover:text-dmac-yellow transition-colors">
+              <a href="#" className="block text-sm hover:text-yellow-400 transition-colors">
                 Política de Privacidad
               </a>
             </div>
@@ -85,28 +85,28 @@ const Footer = () => {
 
           {/* Redes sociales */}
           <div className="animate-fade-in-up [animation-delay:0.4s]">
-            <h4 className="font-bold text-lg mb-4 text-dmac-yellow">Síguenos</h4>
+            <h4 className="font-bold text-lg mb-4 text-yellow-400">Síguenos</h4>
             <div className="flex gap-4 mb-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.type}
                   href={social.href}
                   aria-label={social.label}
-                  className="p-2 bg-dmac-white/10 rounded-lg hover:bg-dmac-yellow hover:text-dmac-red transition-all duration-300 transform hover:scale-110"
+                  className="p-2 bg-white/10 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 transform hover:scale-110"
                 >
                   <SocialIcon type={social.type} />
                 </a>
               ))}
             </div>
-            <p className="text-sm text-dmac-white/80">
+            <p className="text-sm text-white/80">
               Mantente al día con nuestras ofertas y novedades
             </p>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-dmac-white/20 pt-8 text-center">
-          <p className="text-sm text-dmac-white/80">
+        <div className="border-t border-white/20 pt-8 text-center">
+          <p className="text-sm text-white/80">
             &copy; {new Date().getFullYear()} DMAC. Todos los derechos reservados. | Avance Garantizado
           </p>
         </div>
