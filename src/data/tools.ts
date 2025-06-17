@@ -94,3 +94,17 @@ export const getDiscountPercentage = (months: number): number => {
   if (months > 1) return 10;
   return 0;
 };
+
+export const calculateDiscount = (days: number): number => {
+  if (days >= 30) return 0.15; // 15% discount for 30+ days
+  if (days >= 14) return 0.10; // 10% discount for 14+ days
+  if (days >= 7) return 0.05;  // 5% discount for 7+ days
+  return 0;
+};
+
+export const getDiscountText = (days: number): string => {
+  if (days >= 30) return '¡15% de descuento por arriendo de 30+ días!';
+  if (days >= 14) return '¡10% de descuento por arriendo de 14+ días!';
+  if (days >= 7) return '¡5% de descuento por arriendo de 7+ días!';
+  return '';
+};
