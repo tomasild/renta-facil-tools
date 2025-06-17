@@ -6,11 +6,11 @@
 @layer base {
   :root {
     --background: 255 255 255; /* white */
-    --foreground: 15 23 42; /* slate-900 */
+    --foreground: 0 0 0; /* black */
     --card: 255 255 255; /* white */
-    --card-foreground: 15 23 42; /* slate-900 */
+    --card-foreground: 0 0 0; /* black */
     --popover: 255 255 255; /* white */
-    --popover-foreground: 15 23 42; /* slate-900 */
+    --popover-foreground: 0 0 0; /* black */
     --primary: 254 248 0; /* dmac-yellow */
     --primary-foreground: 0 0 0; /* black */
     --secondary: 248 250 252; /* slate-50 */
@@ -19,34 +19,12 @@
     --muted-foreground: 100 116 139; /* slate-500 */
     --accent: 248 250 252; /* slate-50 */
     --accent-foreground: 15 23 42; /* slate-900 */
-    --destructive: 239 68 68; /* red-500 */
+    --destructive: 191 4 17; /* dmac-red */
     --destructive-foreground: 255 255 255; /* white */
     --border: 226 232 240; /* slate-200 */
     --input: 226 232 240; /* slate-200 */
     --ring: 254 248 0; /* dmac-yellow */
     --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 15 23 42; /* slate-900 */
-    --foreground: 248 250 252; /* slate-50 */
-    --card: 30 41 59; /* slate-700 */
-    --card-foreground: 248 250 252; /* slate-50 */
-    --popover: 30 41 59; /* slate-700 */
-    --popover-foreground: 248 250 252; /* slate-50 */
-    --primary: 254 248 0; /* dmac-yellow */
-    --primary-foreground: 0 0 0; /* black */
-    --secondary: 51 65 85; /* slate-600 */
-    --secondary-foreground: 248 250 252; /* slate-50 */
-    --muted: 51 65 85; /* slate-600 */
-    --muted-foreground: 148 163 184; /* slate-400 */
-    --accent: 51 65 85; /* slate-600 */
-    --accent-foreground: 248 250 252; /* slate-50 */
-    --destructive: 239 68 68; /* red-500 */
-    --destructive-foreground: 248 250 252; /* slate-50 */
-    --border: 51 65 85; /* slate-600 */
-    --input: 51 65 85; /* slate-600 */
-    --ring: 254 248 0; /* dmac-yellow */
   }
 }
 
@@ -57,40 +35,75 @@
 
   html {
     @apply scroll-smooth;
+    font-size: 16px;
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
+    line-height: 1.2;
   }
 
-  /* Focus styles for accessibility */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  /* Accessibility improvements */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-primary;
   }
 
-  /* Skip to main content link */
   .skip-link {
     @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --border: 0 0 0;
+      --input: 0 0 0;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
 @layer utilities {
   /* Bento Grid Utilities */
   .bento-grid {
-    @apply grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+    @apply grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
   }
 
   .bento-item {
-    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
+    @apply bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300;
   }
 
   .bento-item-large {
-    @apply col-span-1 sm:col-span-2;
+    @apply sm:col-span-2;
   }
 
   .bento-item-tall {
@@ -99,11 +112,11 @@
 
   /* Step Component Utilities */
   .step-connector {
-    @apply hidden sm:block absolute top-8 left-8 w-full h-0.5 bg-border -z-10;
+    @apply hidden md:block absolute top-8 left-8 w-full h-0.5 bg-gray-200 -z-10;
   }
 
   .step-number {
-    @apply w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl transition-all duration-300 hover:scale-110;
+    @apply w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl shadow-lg;
   }
 
   /* Animation Utilities */
@@ -127,7 +140,7 @@
 
   /* Hero Background */
   .hero-bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -137,6 +150,19 @@
     .hero-bg {
       background-attachment: scroll;
     }
+  }
+
+  /* Responsive typography */
+  .responsive-text-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .responsive-text-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .responsive-text-lg {
+    @apply text-lg sm:text-xl;
   }
 }
 
@@ -176,5 +202,9 @@
 @media print {
   .no-print {
     display: none;
+  }
+  
+  body {
+    @apply text-black bg-white;
   }
 }

@@ -48,19 +48,19 @@ const Catalog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-white text-black">
       <main id="main-content">
         {/* Hero Section */}
         <section 
-          className="bg-dmac-red text-white py-16 px-4 sm:px-6 lg:px-8"
+          className="bg-dmac-red text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8"
           role="banner"
           aria-labelledby="catalog-hero-heading"
         >
           <div className="container mx-auto text-center animate-fade-in-up">
-            <h1 id="catalog-hero-heading" className="text-4xl md:text-5xl font-extrabold font-heading mb-4">
+            <h1 id="catalog-hero-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading mb-4">
               Catálogo de <span className="text-dmac-yellow">Herramientas</span>
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto">
               Encuentra las herramientas profesionales que necesitas para tu proyecto
             </p>
           </div>
@@ -70,9 +70,9 @@ const Catalog = () => {
           <div className="grid lg:grid-cols-4 gap-8">
             {/* Filtros y Búsqueda */}
             <aside className="lg:col-span-1" role="complementary" aria-label="Filtros de búsqueda">
-              <Card className="sticky top-24">
+              <Card className="sticky top-24 shadow-sm">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-black">
                     <Filter className="h-5 w-5" aria-hidden="true" />
                     Filtros
                   </CardTitle>
@@ -80,11 +80,11 @@ const Catalog = () => {
                 <CardContent className="space-y-6">
                   {/* Búsqueda */}
                   <div>
-                    <label htmlFor="search" className="block text-sm font-medium mb-2">
+                    <label htmlFor="search" className="block text-sm font-medium mb-2 text-black">
                       Buscar herramientas
                     </label>
                     <div className="relative">
-                      <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+                      <Search className="absolute left-3 top-3 h-4 w-4 text-gray-500" aria-hidden="true" />
                       <Input
                         id="search"
                         type="search"
@@ -95,14 +95,14 @@ const Catalog = () => {
                         aria-describedby="search-help"
                       />
                     </div>
-                    <p id="search-help" className="text-xs text-muted-foreground mt-1">
+                    <p id="search-help" className="text-xs text-gray-500 mt-1">
                       Busca por nombre o descripción de la herramienta
                     </p>
                   </div>
 
                   {/* Categoría */}
                   <div>
-                    <label htmlFor="category" className="block text-sm font-medium mb-2">
+                    <label htmlFor="category" className="block text-sm font-medium mb-2 text-black">
                       Categoría
                     </label>
                     <Select value={selectedCategory} onValueChange={setSelectedCategory}>
@@ -122,7 +122,7 @@ const Catalog = () => {
 
                   {/* Ordenar */}
                   <div>
-                    <label htmlFor="sort" className="block text-sm font-medium mb-2">
+                    <label htmlFor="sort" className="block text-sm font-medium mb-2 text-black">
                       Ordenar por
                     </label>
                     <Select value={sortBy} onValueChange={setSortBy}>
@@ -139,12 +139,12 @@ const Catalog = () => {
 
                   {/* Resumen de selección */}
                   {selectedTools.length > 0 && (
-                    <div className="bg-muted p-4 rounded-lg">
-                      <h3 className="font-semibold mb-2 flex items-center gap-2">
+                    <div className="bg-gray-50 p-4 rounded-lg border">
+                      <h3 className="font-semibold mb-2 flex items-center gap-2 text-black">
                         <ShoppingCart className="h-4 w-4" aria-hidden="true" />
                         Herramientas Seleccionadas
                       </h3>
-                      <Badge variant="secondary">
+                      <Badge variant="secondary" className="bg-gray-200 text-black">
                         {selectedTools.length} herramienta{selectedTools.length !== 1 ? 's' : ''}
                       </Badge>
                     </div>
@@ -158,17 +158,17 @@ const Catalog = () => {
               {/* Información de resultados */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold mb-2">
+                  <h2 className="text-2xl font-bold mb-2 text-black">
                     {filteredTools.length} herramienta{filteredTools.length !== 1 ? 's' : ''} encontrada{filteredTools.length !== 1 ? 's' : ''}
                   </h2>
                   {searchTerm && (
-                    <p className="text-muted-foreground">
+                    <p className="text-gray-600">
                       Resultados para "{searchTerm}"
                     </p>
                   )}
                 </div>
                 {selectedCategory !== 'all' && (
-                  <Badge variant="outline" className="mt-2 sm:mt-0">
+                  <Badge variant="outline" className="mt-2 sm:mt-0 border-dmac-red text-dmac-red">
                     {categories.find(c => c.id === selectedCategory)?.name}
                   </Badge>
                 )}
@@ -194,9 +194,9 @@ const Catalog = () => {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <Search className="h-12 w-12 text-muted-foreground mx-auto mb-4" aria-hidden="true" />
-                  <h3 className="text-lg font-semibold mb-2">No se encontraron herramientas</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" aria-hidden="true" />
+                  <h3 className="text-lg font-semibold mb-2 text-black">No se encontraron herramientas</h3>
+                  <p className="text-gray-600 mb-4">
                     Intenta ajustar tus filtros o términos de búsqueda
                   </p>
                   <Button 
@@ -205,6 +205,7 @@ const Catalog = () => {
                       setSelectedCategory('all');
                     }}
                     variant="outline"
+                    className="border-dmac-red text-dmac-red hover:bg-dmac-red hover:text-white"
                   >
                     Limpiar filtros
                   </Button>
@@ -216,8 +217,8 @@ const Catalog = () => {
                 <>
                   <Separator className="my-12" />
                   <div className="animate-fade-in-up">
-                    <h2 className="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2">
-                      <Calendar className="h-8 w-8 text-primary" aria-hidden="true" />
+                    <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2 text-black">
+                      <Calendar className="h-6 sm:h-8 w-6 sm:w-8 text-dmac-red" aria-hidden="true" />
                       Calculadora de Cotización
                     </h2>
                     <QuoteCalculator selectedTools={selectedTools} />

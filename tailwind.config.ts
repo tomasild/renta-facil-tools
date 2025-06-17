@@ -2,7 +2,6 @@
 import type { Config } from "tailwindcss";
 
 export default {
-	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -36,45 +35,45 @@ export default {
 				'dmac-red': '#BF0411',
 				'dmac-red-hover': '#A0030E',
 				
-				// Semantic colors
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				// Semantic colors - Light mode only
+				border: '#e2e8f0', // slate-200
+				input: '#e2e8f0', // slate-200
+				ring: '#FEF800', // dmac-yellow
+				background: '#ffffff', // white
+				foreground: '#000000', // black
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: '#FEF800', // dmac-yellow
+					foreground: '#000000' // black
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					DEFAULT: '#f8fafc', // slate-50
+					foreground: '#0f172a' // slate-900
 				},
 				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
+					DEFAULT: '#BF0411', // dmac-red
+					foreground: '#ffffff' // white
 				},
 				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: '#f8fafc', // slate-50
+					foreground: '#64748b' // slate-500
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: '#f8fafc', // slate-50
+					foreground: '#0f172a' // slate-900
 				},
 				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
+					DEFAULT: '#ffffff', // white
+					foreground: '#000000' // black
 				},
 				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					DEFAULT: '#ffffff', // white
+					foreground: '#000000' // black
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: '0.5rem',
+				md: 'calc(0.5rem - 2px)',
+				sm: 'calc(0.5rem - 4px)'
 			},
 			spacing: {
 				'18': '4.5rem',

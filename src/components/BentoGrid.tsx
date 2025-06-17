@@ -12,6 +12,7 @@ interface BentoItemProps {
   className?: string;
   large?: boolean;
   tall?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const BentoGrid = ({ children, className }: BentoGridProps) => {
@@ -22,7 +23,7 @@ export const BentoGrid = ({ children, className }: BentoGridProps) => {
   );
 };
 
-export const BentoItem = ({ children, className, large = false, tall = false }: BentoItemProps) => {
+export const BentoItem = ({ children, className, large = false, tall = false, style }: BentoItemProps) => {
   return (
     <div 
       className={cn(
@@ -31,6 +32,7 @@ export const BentoItem = ({ children, className, large = false, tall = false }: 
         tall && "bento-item-tall",
         className
       )}
+      style={style}
     >
       {children}
     </div>
