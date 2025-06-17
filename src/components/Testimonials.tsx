@@ -40,35 +40,35 @@ const Testimonials = () => {
   return (
     <section className="py-12 sm:py-16 md:py-20 bg-brand-dark">
       <div className="container mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-10 md:mb-12 animate-fade-in-up">Lo que dicen nuestros clientes</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-10 md:mb-12 animate-fade-in-up text-gray-100">Lo que dicen nuestros clientes</h2>
         <Carousel
           opts={{
             align: "start",
             loop: true,
           }}
-          className="w-full max-w-4xl mx-auto"
+          className="w-full max-w-4xl mx-auto animate-fade-in-up"
         >
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1"> {/* This p-1 is for spacing between cards due to outline/focus styles if any */}
-                  <Card className="bg-secondary border-gray-700/50 h-full flex flex-col transition-transform duration-300 hover:scale-105">
+                  <Card className="bg-secondary border-border h-full flex flex-col transition-transform duration-300 hover:scale-105">
                     <CardContent className="flex flex-col items-center text-center justify-center p-4 sm:p-6 flex-grow">
                       <p className="text-sm text-muted-foreground mb-4 flex-grow">"{testimonial.comment}"</p>
                       <Avatar className="w-12 h-12 sm:w-14 sm:h-14 mb-3 sm:mb-4">
                         <AvatarImage src={testimonial.image} alt={testimonial.name} />
                         <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                       </Avatar>
-                      <h4 className="font-semibold sm:font-bold text-white text-base sm:text-lg">{testimonial.name}</h4>
-                      <p className="text-xs sm:text-sm text-brand-yellow">{testimonial.title}</p>
+                      <h4 className="font-semibold sm:font-bold text-secondary-foreground text-base sm:text-lg">{testimonial.name}</h4>
+                      <p className="text-xs sm:text-sm text-primary">{testimonial.title}</p>
                     </CardContent>
                   </Card>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="text-white bg-secondary hover:bg-gray-700 border-gray-600" />
-          <CarouselNext className="text-white bg-secondary hover:bg-gray-700 border-gray-600" />
+          <CarouselPrevious className="text-secondary-foreground bg-secondary hover:bg-secondary/90 border-border" />
+          <CarouselNext className="text-secondary-foreground bg-secondary hover:bg-secondary/90 border-border" />
         </Carousel>
       </div>
     </section>

@@ -13,7 +13,7 @@ const Footer = () => {
     // bg-gris-claro is bg-secondary, border-gray-300 should be border-border
     // text-gray-700 should be text-foreground or text-muted-foreground
     <footer className="bg-secondary border-t border-border py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto text-center text-muted-foreground">
+      <div className="container mx-auto text-center text-muted-foreground animate-fade-in-up">
         {/* Social Icons */}
         <div className="flex justify-center items-center gap-4 mb-6">
           {socialLinks.map((social) => (

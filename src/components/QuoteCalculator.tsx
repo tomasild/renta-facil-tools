@@ -64,7 +64,7 @@ const QuoteCalculator = () => { // This component will now be more of a "QuoteFo
 
   if (quoteItems.length === 0) {
     return (
-      <div className="py-12 sm:py-16 md:py-20 text-center">
+      <div className="py-12 sm:py-16 md:py-20 text-center animate-fade-in-up">
         <p className="text-muted-foreground text-lg">Tu cotización está vacía.</p>
         <p className="text-muted-foreground">Agrega herramientas del catálogo para continuar.</p>
         {/* Optionally, a button to go back to the main catalog tool list if this component is separate */}
@@ -76,7 +76,7 @@ const QuoteCalculator = () => { // This component will now be more of a "QuoteFo
     // This component no longer lists all tools, only the quote form and summary.
     // It will be rendered by Catalog.tsx page.
     // The outer div and title like "Catálogo y Cotizador" will be part of Catalog.tsx itself.
-    <section aria-labelledby="quote-summary-title" className="mt-12 sm:mt-16 sticky top-10"> {/* Reduced top margin */}
+    <section aria-labelledby="quote-summary-title" className="mt-12 sm:mt-16 sticky top-10 animate-fade-in-up"> {/* Reduced top margin */}
         <div className="bg-card rounded-xl p-4 sm:p-6 md:p-8 shadow-2xl border border-border">
             <h2 id="quote-summary-title" className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-card-foreground">2. Revisa y Envía tu Cotización</h2>
 
@@ -114,7 +114,7 @@ const QuoteCalculator = () => { // This component will now be more of a "QuoteFo
                                     !date && "text-muted-foreground"
                                     )}
                                 >
-                                    <CalendarIcon className="mr-4 h-6 w-6 text-rojo-dmac" /> {/* Icon color */}
+                                    <CalendarIcon className="mr-4 h-6 w-6 text-highlight-red" /> {/* Icon color */}
                                     {date?.from ? (
                                     date.to ? (
                                         <>
@@ -186,10 +186,6 @@ const QuoteCalculator = () => { // This component will now be more of a "QuoteFo
                 {/* )} */} {/* This closing parenthesis was for the old selectedTools.length check, now handled by quoteItems at the top */}
             </div>
         </section>
-  );
-};
-
-export default QuoteCalculator;
   );
 };
 

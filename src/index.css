@@ -77,10 +77,6 @@
 }
 
 @layer base {
-  * {
-    @apply border-border; /* Uses HSL defined above */
-  }
-
   body {
     @apply bg-background text-foreground; /* Uses HSL defined above */
     font-family: 'Inter', sans-serif;

@@ -23,11 +23,11 @@ const ToolCard = ({ tool }: ToolCardProps) => { // Props simplified
   };
 
   return (
-    <article className="bg-card rounded-lg overflow-hidden shadow-md transition-shadow hover:shadow-lg flex flex-col border border-border focus-within:ring-2 focus-within:ring-ring">
+    <article className="bg-card rounded-lg overflow-hidden shadow-md transition-shadow hover:shadow-lg flex flex-col border border-border focus-within:ring-2 focus-within:ring-ring animate-fade-in-up">
       <img
         src={tool.imageUrl || '/placeholder.svg'}
         alt={`${tool.name} - herramienta-arriendo-valparaiso`}
-        className="w-full h-48 object-contain bg-muted"
+        className="w-full h-48 object-contain bg-muted hover:scale-105 transition-transform duration-300 ease-in-out"
       />
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-lg font-semibold text-foreground mb-2">{tool.name}</h3>

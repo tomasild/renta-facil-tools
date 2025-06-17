@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <header className="bg-background backdrop-blur-sm py-4 px-4 sm:px-6 lg:px-8 sticky top-0 z-50 border-b border-border shadow-sm">
       <div className="container mx-auto flex items-center justify-between">
-        <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 text-foreground hover:text-highlight-red transition-colors">
+        <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3 text-foreground hover:text-highlight-red transition-colors animate-fade-in-up">
           <HardHat className="w-8 h-8 sm:w-10 sm:h-10 text-highlight-red" />
           <div>
             <h1 className="text-lg sm:text-xl font-bold font-heading uppercase tracking-wider">Arriendo de herramientas para la construcción</h1>
@@ -116,7 +116,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div className={`md:hidden absolute top-full left-0 w-full bg-background border-b border-border shadow-lg transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-[calc(100vh-100px)] overflow-y-auto' : 'max-h-0 overflow-hidden'}`}>
-          <nav className="flex flex-col items-center gap-2 py-6 px-4">
+          <nav className="flex flex-col items-center gap-2 py-6 px-4 animate-fade-in-up">
               {navLinks.map((link) => (
               <NavLink
                 key={link.href}
