@@ -48,19 +48,19 @@ const Catalog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-gray-50 text-black">
       <main id="main-content">
         {/* Hero Section */}
         <section 
-          className="bg-dmac-red text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8"
+          className="bg-gray-900 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8"
           role="banner"
           aria-labelledby="catalog-hero-heading"
         >
           <div className="container mx-auto text-center animate-fade-in-up">
-            <h1 id="catalog-hero-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading mb-4">
+            <h1 id="catalog-hero-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading mb-4 text-white">
               Catálogo de <span className="text-dmac-yellow">Herramientas</span>
             </h1>
-            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
               Encuentra las herramientas profesionales que necesitas para tu proyecto
             </p>
           </div>
@@ -70,7 +70,7 @@ const Catalog = () => {
           <div className="grid lg:grid-cols-4 gap-8">
             {/* Filtros y Búsqueda */}
             <aside className="lg:col-span-1" role="complementary" aria-label="Filtros de búsqueda">
-              <Card className="sticky top-24 shadow-sm">
+              <Card className="sticky top-24 shadow-sm bg-white border-gray-300">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-black">
                     <Filter className="h-5 w-5" aria-hidden="true" />
@@ -91,7 +91,7 @@ const Catalog = () => {
                         placeholder="Buscar por nombre o descripción..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10"
+                        className="pl-10 border-gray-300"
                         aria-describedby="search-help"
                       />
                     </div>
@@ -106,7 +106,7 @@ const Catalog = () => {
                       Categoría
                     </label>
                     <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                      <SelectTrigger id="category">
+                      <SelectTrigger id="category" className="border-gray-300">
                         <SelectValue placeholder="Seleccionar categoría" />
                       </SelectTrigger>
                       <SelectContent>
@@ -126,7 +126,7 @@ const Catalog = () => {
                       Ordenar por
                     </label>
                     <Select value={sortBy} onValueChange={setSortBy}>
-                      <SelectTrigger id="sort">
+                      <SelectTrigger id="sort" className="border-gray-300">
                         <SelectValue placeholder="Ordenar por" />
                       </SelectTrigger>
                       <SelectContent>
@@ -139,12 +139,12 @@ const Catalog = () => {
 
                   {/* Resumen de selección */}
                   {selectedTools.length > 0 && (
-                    <div className="bg-gray-50 p-4 rounded-lg border">
+                    <div className="bg-gray-200 p-4 rounded-lg border border-gray-300">
                       <h3 className="font-semibold mb-2 flex items-center gap-2 text-black">
                         <ShoppingCart className="h-4 w-4" aria-hidden="true" />
                         Herramientas Seleccionadas
                       </h3>
-                      <Badge variant="secondary" className="bg-gray-200 text-black">
+                      <Badge variant="secondary" className="bg-gray-300 text-black">
                         {selectedTools.length} herramienta{selectedTools.length !== 1 ? 's' : ''}
                       </Badge>
                     </div>
@@ -168,7 +168,7 @@ const Catalog = () => {
                   )}
                 </div>
                 {selectedCategory !== 'all' && (
-                  <Badge variant="outline" className="mt-2 sm:mt-0 border-dmac-red text-dmac-red">
+                  <Badge variant="outline" className="mt-2 sm:mt-0 border-gray-600 text-gray-700">
                     {categories.find(c => c.id === selectedCategory)?.name}
                   </Badge>
                 )}
@@ -205,7 +205,7 @@ const Catalog = () => {
                       setSelectedCategory('all');
                     }}
                     variant="outline"
-                    className="border-dmac-red text-dmac-red hover:bg-dmac-red hover:text-white"
+                    className="border-gray-600 text-gray-700 hover:bg-gray-600 hover:text-white"
                   >
                     Limpiar filtros
                   </Button>

@@ -1,9 +1,7 @@
-
 import { HardHat, Menu, X, Instagram, Linkedin } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ThemeToggle } from './ThemeToggle';
 
 // Iconos de redes sociales
 const SocialIcon = ({ type, className }: { type: 'whatsapp' | 'instagram' | 'tiktok' | 'linkedin', className?: string }) => {
@@ -56,7 +54,7 @@ const Header = () => {
         <Link 
           to="/" 
           onClick={() => setIsMenuOpen(false)} 
-          className="flex items-center gap-3 text-white hover:text-dmac-yellow transition-colors focus:outline-none focus:ring-2 focus:ring-dmac-yellow focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md p-1"
+          className="flex items-center gap-3 text-white hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md p-1"
           aria-label="DMAC - Arriendo de herramientas - Ir al inicio"
         >
           <img 
@@ -68,10 +66,10 @@ const Header = () => {
               e.currentTarget.nextElementSibling?.classList.remove('hidden');
             }}
           />
-          <HardHat className="w-8 h-8 sm:w-10 sm:h-10 text-dmac-yellow hidden" aria-hidden="true" />
+          <HardHat className="w-8 h-8 sm:w-10 sm:h-10 text-white hidden" aria-hidden="true" />
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold font-heading uppercase tracking-wider">DMAC</h1>
-            <p className="text-xs sm:text-sm text-white/90">Avance Garantizado</p>
+            <h1 className="text-xl sm:text-2xl font-bold font-heading uppercase tracking-wider text-white">DMAC</h1>
+            <p className="text-xs sm:text-sm text-white">Avance Garantizado</p>
           </div>
         </Link>
 
@@ -82,8 +80,8 @@ const Header = () => {
               key={link.href}
               to={link.href}
               className={({ isActive }) =>
-                `text-base font-medium transition-colors hover:text-dmac-yellow focus:outline-none focus:ring-2 focus:ring-dmac-yellow focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md px-2 py-1 ${
-                  isActive ? 'text-dmac-yellow' : 'text-white'
+                `text-base font-medium transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md px-2 py-1 ${
+                  isActive ? 'text-white font-bold' : 'text-white/90'
                 }`
               }
             >
@@ -92,7 +90,7 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Social Icons & Theme Toggle - Desktop */}
+        {/* Social Icons - Desktop */}
         <div className="hidden lg:flex items-center gap-4">
           <div className="flex items-center gap-3" role="navigation" aria-label="Redes sociales">
             {socialLinks.map((social) => (
@@ -100,16 +98,15 @@ const Header = () => {
                 key={social.type}
                 href={social.href}
                 aria-label={social.label}
-                className="text-white hover:text-dmac-yellow transition-colors focus:outline-none focus:ring-2 focus:ring-dmac-yellow focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md p-1"
+                className="text-white hover:text-white/80 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md p-1"
               >
                 <SocialIcon type={social.type} />
               </a>
             ))}
           </div>
-          <ThemeToggle />
           <Button 
             asChild 
-            className="bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold focus:ring-2 focus:ring-dmac-yellow focus:ring-offset-2 focus:ring-offset-dmac-red"
+            className="bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red"
           >
             <Link to="/catalogo">Cotiza aquí</Link>
           </Button>
@@ -117,7 +114,6 @@ const Header = () => {
 
         {/* Mobile Controls */}
         <div className="lg:hidden flex items-center gap-2">
-          <ThemeToggle />
           <Button 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
             variant="ghost" 
@@ -125,7 +121,7 @@ const Header = () => {
             aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
-            className="text-white hover:text-dmac-yellow hover:bg-white/10 focus:ring-2 focus:ring-dmac-yellow focus:ring-offset-2 focus:ring-offset-dmac-red"
+            className="text-white hover:text-white hover:bg-white/10 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red"
           >
             {isMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
           </Button>
@@ -147,8 +143,8 @@ const Header = () => {
               to={link.href}
               onClick={() => setIsMenuOpen(false)}
               className={({ isActive }) =>
-                `text-lg font-medium transition-colors hover:text-dmac-yellow w-full text-center py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-dmac-yellow focus:ring-offset-2 focus:ring-offset-dmac-red ${
-                  isActive ? 'text-dmac-yellow bg-white/10' : 'text-white'
+                `text-lg font-medium transition-colors hover:text-white w-full text-center py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red ${
+                  isActive ? 'text-white bg-white/10 font-bold' : 'text-white/90'
                 }`
               }
             >
@@ -163,7 +159,7 @@ const Header = () => {
                 key={social.type}
                 href={social.href}
                 aria-label={social.label}
-                className="text-white hover:text-dmac-yellow transition-colors focus:outline-none focus:ring-2 focus:ring-dmac-yellow focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md p-1"
+                className="text-white hover:text-white/80 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red rounded-md p-1"
               >
                 <SocialIcon type={social.type} />
               </a>
@@ -172,7 +168,7 @@ const Header = () => {
           
           <Button 
             asChild 
-            className="w-full mt-4 bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold focus:ring-2 focus:ring-dmac-yellow focus:ring-offset-2 focus:ring-offset-dmac-red" 
+            className="w-full mt-4 bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red" 
             size="lg"
           >
             <Link to="/catalogo" onClick={() => setIsMenuOpen(false)}>Cotiza aquí</Link>

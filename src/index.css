@@ -13,16 +13,16 @@
     --popover-foreground: 0 0 0; /* black */
     --primary: 254 248 0; /* dmac-yellow */
     --primary-foreground: 0 0 0; /* black */
-    --secondary: 248 250 252; /* slate-50 */
-    --secondary-foreground: 15 23 42; /* slate-900 */
-    --muted: 248 250 252; /* slate-50 */
-    --muted-foreground: 100 116 139; /* slate-500 */
-    --accent: 248 250 252; /* slate-50 */
-    --accent-foreground: 15 23 42; /* slate-900 */
+    --secondary: 243 244 246; /* gray-100 */
+    --secondary-foreground: 17 24 39; /* gray-900 */
+    --muted: 243 244 246; /* gray-100 */
+    --muted-foreground: 107 114 128; /* gray-500 */
+    --accent: 243 244 246; /* gray-100 */
+    --accent-foreground: 17 24 39; /* gray-900 */
     --destructive: 191 4 17; /* dmac-red */
     --destructive-foreground: 255 255 255; /* white */
-    --border: 226 232 240; /* slate-200 */
-    --input: 226 232 240; /* slate-200 */
+    --border: 209 213 219; /* gray-300 */
+    --input: 209 213 219; /* gray-300 */
     --ring: 254 248 0; /* dmac-yellow */
     --radius: 0.5rem;
   }
@@ -99,7 +99,7 @@
   }
 
   .bento-item {
-    @apply bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300;
+    @apply bg-white border border-gray-300 rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-all duration-300;
   }
 
   .bento-item-large {
@@ -112,7 +112,7 @@
 
   /* Step Component Utilities */
   .step-connector {
-    @apply hidden md:block absolute top-8 left-8 w-full h-0.5 bg-gray-200 -z-10;
+    @apply hidden md:block absolute top-8 left-8 w-full h-0.5 bg-gray-300 -z-10;
   }
 
   .step-number {

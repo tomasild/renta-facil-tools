@@ -70,13 +70,13 @@ const Home = () => {
               <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-6xl font-extrabold font-heading mb-6 text-white">
                 Arriendo de herramientas para la construcción
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl mb-4 text-white/90">
+              <p className="text-lg sm:text-xl md:text-2xl mb-4 text-white">
                 Región de Valparaíso
               </p>
               <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-dmac-yellow mb-8">
                 Avance Garantizado
               </p>
-              <p className="text-lg sm:text-xl mb-12 text-white/90 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl mb-12 text-white max-w-2xl mx-auto">
                 Herramientas profesionales sin inversión inicial. Paga solo por los días que las necesitas.
               </p>
               <Button 
@@ -94,7 +94,7 @@ const Home = () => {
         </section>
 
         {/* Dolor-Solución con Bento Grid */}
-        <section className="py-16 sm:py-20 bg-gray-50" aria-labelledby="solutions-heading">
+        <section className="py-16 sm:py-20 bg-gray-100" aria-labelledby="solutions-heading">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 animate-fade-in-up">
               <h2 id="solutions-heading" className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-black">
@@ -103,7 +103,7 @@ const Home = () => {
             </div>
             <BentoGrid>
               {problems.map((item, index) => (
-                <BentoItem key={index} className="animate-fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
+                <BentoItem key={index} className="animate-fade-in-up bg-white border border-gray-300 hover:shadow-lg transition-shadow duration-300" style={{ animationDelay: `${index * 100}ms` }}>
                   <div className="mb-4">
                     <h3 className="font-bold text-dmac-red mb-3 text-sm">❌ PROBLEMA:</h3>
                     <p className="text-gray-600 mb-4 text-sm">{item.problem}</p>
@@ -131,7 +131,7 @@ const Home = () => {
         </section>
 
         {/* Vista Previa del Catálogo con Bento Grid */}
-        <section className="py-16 sm:py-20 bg-gray-50" aria-labelledby="catalog-heading">
+        <section className="py-16 sm:py-20 bg-gray-100" aria-labelledby="catalog-heading">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 animate-fade-in-up">
               <h2 id="catalog-heading" className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-black">
@@ -143,11 +143,11 @@ const Home = () => {
             </div>
             <BentoGrid className="mb-12">
               {tools.map((tool, index) => (
-                <BentoItem key={index} className="animate-fade-in-up hover:shadow-lg transition-shadow duration-300" style={{ animationDelay: `${index * 100}ms` }}>
+                <BentoItem key={index} className="animate-fade-in-up bg-white border border-gray-300 hover:shadow-lg transition-shadow duration-300" style={{ animationDelay: `${index * 100}ms` }}>
                   <img 
                     src={tool.image} 
                     alt={`${tool.name} - Herramienta profesional para arriendo`}
-                    className="w-full h-32 object-cover mb-4 rounded bg-gray-100" 
+                    className="w-full h-32 object-cover mb-4 rounded bg-gray-200" 
                   />
                   <h3 className="font-bold mb-2 text-black">{tool.name}</h3>
                   <p className="text-dmac-red font-bold">${tool.price.toLocaleString('es-CL')} / día</p>
@@ -159,7 +159,7 @@ const Home = () => {
                 asChild 
                 size="lg" 
                 variant="outline" 
-                className="border-dmac-red text-dmac-red hover:bg-dmac-red hover:text-white transition-all duration-300"
+                className="border-black text-black hover:bg-black hover:text-white transition-all duration-300"
               >
                 <Link to="/catalogo">
                   Ver Catálogo Completo
@@ -205,7 +205,7 @@ const Home = () => {
         </section>
 
         {/* Beneficios Diferenciales con Bento Grid */}
-        <section className="py-16 sm:py-20 bg-gray-50" aria-labelledby="benefits-heading">
+        <section className="py-16 sm:py-20 bg-gray-100" aria-labelledby="benefits-heading">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16 animate-fade-in-up">
               <h2 id="benefits-heading" className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-black">
@@ -214,7 +214,7 @@ const Home = () => {
             </div>
             <BentoGrid>
               {benefits.map((benefit, index) => (
-                <BentoItem key={index} className="text-center animate-fade-in-up hover:shadow-lg transition-shadow duration-300" style={{ animationDelay: `${index * 100}ms` }}>
+                <BentoItem key={index} className="text-center animate-fade-in-up bg-white border border-gray-300 hover:shadow-lg transition-shadow duration-300" style={{ animationDelay: `${index * 100}ms` }}>
                   <div className="mb-4">{benefit.icon}</div>
                   <h3 className="text-xl font-bold mb-3 text-black">{benefit.title}</h3>
                   <p className="text-gray-600">{benefit.description}</p>
@@ -228,12 +228,12 @@ const Home = () => {
         <FAQ />
 
         {/* CTA Final */}
-        <section className="py-16 sm:py-20 bg-dmac-red text-white" aria-labelledby="cta-heading">
+        <section className="py-16 sm:py-20 bg-gray-900 text-white" aria-labelledby="cta-heading">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
-            <h2 id="cta-heading" className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
+            <h2 id="cta-heading" className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-white">
               ¿Listo para tu próximo proyecto?
             </h2>
-            <p className="text-lg sm:text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
               Obtén tu cotización personalizada y descubre cómo DMAC puede garantizar el avance de tu obra
             </p>
             <Button 
