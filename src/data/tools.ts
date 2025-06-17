@@ -2,109 +2,105 @@
 export interface Tool {
   id: string;
   name: string;
-  description: string;
-  pricePerDay: number;
   category: string;
+  pricePerDay: number;
+  description: string;
+  features: string[];
   image: string;
-  specifications?: string[];
-  available: boolean;
 }
-
-export interface Category {
-  id: string;
-  name: string;
-  description?: string;
-}
-
-export const categories: Category[] = [
-  { id: 'drilling', name: 'Perforación y Taladrado' },
-  { id: 'cutting', name: 'Corte y Sierra' },
-  { id: 'grinding', name: 'Amolado y Lijado' },
-  { id: 'demolition', name: 'Demolición' },
-  { id: 'measuring', name: 'Medición y Nivel' },
-  { id: 'safety', name: 'Seguridad' }
-];
 
 export const tools: Tool[] = [
   {
     id: '1',
-    name: 'Taladro Percutor Profesional',
-    description: 'Taladro percutor de alta potencia para concreto y mampostería',
+    name: 'Taladro Percutor HD',
+    category: 'Herramientas Eléctricas',
     pricePerDay: 8000,
-    category: 'drilling',
-    image: '/placeholder.svg',
-    specifications: ['800W', 'SDS-Plus', 'Velocidad variable'],
-    available: true
+    description: 'Taladro percutor profesional para concreto y mampostería',
+    features: ['800W de potencia', 'Función percutor', 'Mandril SDS-Plus', 'Incluye brocas'],
+    image: '/placeholder.svg'
   },
   {
     id: '2',
-    name: 'Sierra Circular 7¼"',
-    description: 'Sierra circular profesional para cortes precisos en madera',
+    name: 'Sierra Circular Pro',
+    category: 'Herramientas de Corte',
     pricePerDay: 12000,
-    category: 'cutting',
-    image: '/placeholder.svg',
-    specifications: ['1800W', 'Disco 7¼"', 'Corte biselado'],
-    available: true
+    description: 'Sierra circular profesional para madera y materiales diversos',
+    features: ['1200W de potencia', 'Disco 7 1/4"', 'Guía láser', 'Base ajustable'],
+    image: '/placeholder.svg'
   },
   {
     id: '3',
-    name: 'Amoladora Angular 4½"',
-    description: 'Amoladora angular para corte y desbaste de metales',
+    name: 'Amoladora Angular',
+    category: 'Herramientas de Desbaste',
     pricePerDay: 6000,
-    category: 'grinding',
-    image: '/placeholder.svg',
-    specifications: ['900W', 'Disco 4½"', 'Empuñadura auxiliar'],
-    available: true
+    description: 'Amoladora angular para corte y desbaste de metales',
+    features: ['900W de potencia', 'Disco 4 1/2"', 'Empuñadura antivibración', 'Protector ajustable'],
+    image: '/placeholder.svg'
   },
   {
     id: '4',
     name: 'Martillo Demoledor',
-    description: 'Martillo demoledor eléctrico para trabajos pesados',
+    category: 'Herramientas de Demolición',
     pricePerDay: 25000,
-    category: 'demolition',
-    image: '/placeholder.svg',
-    specifications: ['1500W', 'SDS-Max', '15 kg'],
-    available: true
+    description: 'Martillo demoledor pesado para trabajos de demolición',
+    features: ['1500W de potencia', 'Sistema SDS-Max', 'Control de vibración', 'Incluye cinceles'],
+    image: '/placeholder.svg'
   },
   {
     id: '5',
-    name: 'Nivel Láser Rotativo',
-    description: 'Nivel láser profesional para nivelación y alineación',
+    name: 'Compresor de Aire',
+    category: 'Equipos Neumáticos',
     pricePerDay: 15000,
-    category: 'measuring',
-    image: '/placeholder.svg',
-    specifications: ['Rango 100m', 'Precisión ±1mm', 'IP54'],
-    available: true
+    description: 'Compresor de aire portátil para herramientas neumáticas',
+    features: ['50L de capacidad', '8 bar de presión', 'Motor 2HP', 'Ruedas para transporte'],
+    image: '/placeholder.svg'
   },
   {
     id: '6',
-    name: 'Casco de Seguridad',
-    description: 'Casco de protección certificado para obras',
-    pricePerDay: 2000,
-    category: 'safety',
-    image: '/placeholder.svg',
-    specifications: ['Norma ANSI', 'Ajuste universal', 'Ventilación'],
-    available: true
+    name: 'Soldadora Eléctrica',
+    category: 'Equipos de Soldadura',
+    pricePerDay: 18000,
+    description: 'Soldadora eléctrica por arco para trabajos de metal',
+    features: ['200A de corriente', 'Electrodo 2-4mm', 'Control digital', 'Incluye careta'],
+    image: '/placeholder.svg'
   }
 ];
 
-export const getDiscountPercentage = (months: number): number => {
-  if (months > 6) return 25;
-  if (months > 3) return 15;
-  if (months > 1) return 10;
-  return 0;
-};
-
+// Función para calcular descuentos por duración
 export const calculateDiscount = (days: number): number => {
-  if (days >= 30) return 0.15; // 15% discount for 30+ days
-  if (days >= 14) return 0.10; // 10% discount for 14+ days
-  if (days >= 7) return 0.05;  // 5% discount for 7+ days
-  return 0;
+  if (days >= 180) return 0.15; // 6 meses o más: 15% descuento
+  if (days >= 90) return 0.10; // 3 meses o más: 10% descuento
+  if (days >= 30) return 0.05; // 1 mes o más: 5% descuento
+  return 0; // Menos de 1 mes: sin descuento
 };
 
+// Función para obtener texto descriptivo del descuento
 export const getDiscountText = (days: number): string => {
-  if (days >= 30) return '¡15% de descuento por arriendo de 30+ días!';
-  if (days >= 14) return '¡10% de descuento por arriendo de 14+ días!';
-  if (days >= 7) return '¡5% de descuento por arriendo de 7+ días!';
+  if (days >= 180) return '🎉 ¡Descuento del 15% por arriendo de 6+ meses!';
+  if (days >= 90) return '🎉 ¡Descuento del 10% por arriendo de 3+ meses!';
+  if (days >= 30) return '🎉 ¡Descuento del 5% por arriendo de 1+ mes!';
+  if (days >= 25) return '⏰ ¡Solo 5 días más para obtener descuento del 5%!';
+  if (days >= 85) return '⏰ ¡Solo 5 días más para obtener descuento del 10%!';
+  if (days >= 175) return '⏰ ¡Solo 5 días más para obtener descuento del 15%!';
   return '';
+};
+
+// Función para obtener herramientas por categoría
+export const getToolsByCategory = (category: string): Tool[] => {
+  return tools.filter(tool => tool.category === category);
+};
+
+// Función para obtener todas las categorías
+export const getCategories = (): string[] => {
+  return Array.from(new Set(tools.map(tool => tool.category)));
+};
+
+// Función para buscar herramientas
+export const searchTools = (query: string): Tool[] => {
+  const lowerQuery = query.toLowerCase();
+  return tools.filter(tool => 
+    tool.name.toLowerCase().includes(lowerQuery) ||
+    tool.category.toLowerCase().includes(lowerQuery) ||
+    tool.description.toLowerCase().includes(lowerQuery)
+  );
 };
