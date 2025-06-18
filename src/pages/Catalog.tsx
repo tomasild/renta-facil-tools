@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Search, Filter, ShoppingCart, Calendar } from 'lucide-react';
-import { tools, Tool, categories } from '@/data/tools';
+import { tools, Tool, getCategories } from '@/data/tools';
 import ToolCard from '@/components/ToolCard';
 import QuoteCalculator from '@/components/QuoteCalculator';
 
@@ -16,6 +15,8 @@ const Catalog = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedTools, setSelectedTools] = useState<Tool[]>([]);
   const [sortBy, setSortBy] = useState<string>('name');
+
+  const categories = getCategories();
 
   const filteredTools = tools
     .filter(tool => 
@@ -58,7 +59,7 @@ const Catalog = () => {
         >
           <div className="container mx-auto text-center animate-fade-in-up">
             <h1 id="catalog-hero-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading mb-4 text-white">
-              Catálogo de <span className="text-dmac-yellow">Herramientas</span>
+              Catálogo de <span className="text-yellow-400">Herramientas</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
               Encuentra las herramientas profesionales que necesitas para tu proyecto
@@ -112,8 +113,8 @@ const Catalog = () => {
                       <SelectContent>
                         <SelectItem value="all">Todas las categorías</SelectItem>
                         {categories.map(category => (
-                          <SelectItem key={category.id} value={category.id}>
-                            {category.name}
+                          <SelectItem key={category} value={category}>
+                            {category}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -169,7 +170,7 @@ const Catalog = () => {
                 </div>
                 {selectedCategory !== 'all' && (
                   <Badge variant="outline" className="mt-2 sm:mt-0 border-gray-600 text-gray-700">
-                    {categories.find(c => c.id === selectedCategory)?.name}
+                    {selectedCategory}
                   </Badge>
                 )}
               </div>
@@ -218,7 +219,7 @@ const Catalog = () => {
                   <Separator className="my-12" />
                   <div className="animate-fade-in-up">
                     <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2 text-black">
-                      <Calendar className="h-6 sm:h-8 w-6 sm:w-8 text-dmac-red" aria-hidden="true" />
+                      <Calendar className="h-6 sm:h-8 w-6 sm:w-8 text-red-600" aria-hidden="true" />
                       Calculadora de Cotización
                     </h2>
                     <QuoteCalculator selectedTools={selectedTools} />
