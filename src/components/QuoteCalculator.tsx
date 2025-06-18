@@ -1,7 +1,5 @@
 
 import { useState } from 'react';
-import { tools, Tool } from '@/data/tools';
-import ToolCard from './ToolCard';
 import { DateRange } from 'react-day-picker';
 import { addDays, format, differenceInDays } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -13,44 +11,15 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { useQuote } from '@/contexts/QuoteContext';
+import { calculateDiscount, getDiscountText } from '@/data/tools';
 
-interface QuoteCalculatorProps {
-  selectedTools?: Tool[];
-}
-
-// Función para calcular descuentos
-const calculateDiscount = (days: number): number => {
-  if (days >= 180) return 0.15; // 6 meses o más: 15% descuento
-  if (days >= 90) return 0.10; // 3 meses o más: 10% descuento
-  if (days >= 30) return 0.05; // 1 mes o más: 5% descuento
-  return 0; // Menos de 1 mes: sin descuento
-};
-
-// Función para obtener texto del descuento
-const getDiscountText = (days: number): string => {
-  if (days >= 180) return '🎉 ¡Descuento del 15% por 6+ meses!';
-  if (days >= 90) return '🎉 ¡Descuento del 10% por 3+ meses!';
-  if (days >= 30) return '🎉 ¡Descuento del 5% por 1+ mes!';
-  if (days >= 25) return '⏰ ¡5 días más para descuento del 5%!';
-  if (days >= 85) return '⏰ ¡5 días más para descuento del 10%!';
-  if (days >= 175) return '⏰ ¡5 días más para descuento del 15%!';
-  return '';
-};
-
-const QuoteCalculator = ({ selectedTools: initialSelectedTools = [] }: QuoteCalculatorProps) => {
-  const [selectedTools, setSelectedTools] = useState<Tool[]>(initialSelectedTools);
+const QuoteCalculator = () => {
+  const { selectedTools, removeTool } = useQuote();
   const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(),
     to: addDays(new Date(), 4),
   });
-
-  const handleAddTool = (tool: Tool) => {
-    setSelectedTools((prev) => [...prev, tool]);
-  };
-
-  const handleRemoveTool = (tool: Tool) => {
-    setSelectedTools((prev) => prev.filter((t) => t.id !== tool.id));
-  };
 
   const rentalDays = date?.from && date?.to ? differenceInDays(date.to, date.from) + 1 : 0;
   const subtotal = selectedTools.reduce((acc, tool) => acc + tool.pricePerDay, 0);
@@ -87,48 +56,14 @@ const QuoteCalculator = ({ selectedTools: initialSelectedTools = [] }: QuoteCalc
   return (
     <div id="cotizador" className="py-16 lg:py-24 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Tool Selection - Only if no initial tools */}
-        {initialSelectedTools.length === 0 && (
-          <section aria-labelledby="tool-selection-title" className="mb-16">
-            <div className="text-center mb-12">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold">1</div>
-                <h2 id="tool-selection-title" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-                  Elige tus <span className="text-yellow-500">Herramientas</span>
-                </h2>
-              </div>
-              <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                Selecciona los equipos que necesitas. Puedes agregar o quitar herramientas en cualquier momento.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {tools.map((tool, index) => (
-                <div key={tool.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 50}ms` }}>
-                  <ToolCard
-                    tool={tool}
-                    onAdd={handleAddTool}
-                    onRemove={handleRemoveTool}
-                    isSelected={selectedTools.some((t) => t.id === tool.id)}
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Quote Summary */}
         <section aria-labelledby="quote-summary-title">
           <div className="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
             <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-6 lg:p-8">
               <div className="text-center">
                 <div className="flex items-center justify-center gap-3 mb-4">
-                  {initialSelectedTools.length === 0 && (
-                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-yellow-500 font-bold">2</div>
-                  )}
                   <Calculator className="w-8 h-8 text-gray-900" />
                   <h2 id="quote-summary-title" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">
-                    {initialSelectedTools.length > 0 ? "Tu Cotización" : "Revisa y Envía"}
+                    Tu Cotización
                   </h2>
                 </div>
               </div>
@@ -169,7 +104,7 @@ const QuoteCalculator = ({ selectedTools: initialSelectedTools = [] }: QuoteCalc
                                 variant="ghost" 
                                 size="icon" 
                                 className="text-red-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200" 
-                                onClick={() => handleRemoveTool(tool)}
+                                onClick={() => removeTool(tool)}
                               >
                                 <Trash2 className="h-5 w-5" />
                               </Button>

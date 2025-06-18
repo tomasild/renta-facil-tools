@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,15 +8,16 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Search, Filter, ShoppingCart, Calendar } from 'lucide-react';
 import { tools, Tool, getCategories } from '@/data/tools';
+import { useQuote } from '@/contexts/QuoteContext';
 import ToolCard from '@/components/ToolCard';
 import QuoteCalculator from '@/components/QuoteCalculator';
 
 const Catalog = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedTools, setSelectedTools] = useState<Tool[]>([]);
   const [sortBy, setSortBy] = useState<string>('name');
-
+  
+  const { selectedTools, addTool, removeTool, isToolSelected } = useQuote();
   const categories = getCategories();
 
   const filteredTools = tools
@@ -35,18 +37,6 @@ const Catalog = () => {
           return a.name.localeCompare(b.name);
       }
     });
-
-  const handleAddTool = (tool: Tool) => {
-    setSelectedTools(prev => [...prev, tool]);
-  };
-
-  const handleRemoveTool = (tool: Tool) => {
-    setSelectedTools(prev => prev.filter(t => t.id !== tool.id));
-  };
-
-  const isToolSelected = (tool: Tool) => {
-    return selectedTools.some(t => t.id === tool.id);
-  };
 
   return (
     <div className="min-h-screen bg-gray-50 text-black">
@@ -186,8 +176,8 @@ const Catalog = () => {
                     >
                       <ToolCard
                         tool={tool}
-                        onAdd={handleAddTool}
-                        onRemove={handleRemoveTool}
+                        onAdd={addTool}
+                        onRemove={removeTool}
                         isSelected={isToolSelected(tool)}
                       />
                     </div>
@@ -222,7 +212,7 @@ const Catalog = () => {
                       <Calendar className="h-6 sm:h-8 w-6 sm:w-8 text-red-600" aria-hidden="true" />
                       Calculadora de Cotización
                     </h2>
-                    <QuoteCalculator selectedTools={selectedTools} />
+                    <QuoteCalculator />
                   </div>
                 </>
               )}
