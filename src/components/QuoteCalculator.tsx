@@ -55,9 +55,9 @@ const QuoteCalculator = () => {
 
   return (
     <div id="cotizador" className="py-16 lg:py-24 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-0 sm:px-6 lg:px-8 ">
         <section aria-labelledby="quote-summary-title">
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
+          <div className="bg-card rounded-3xl shadow-xl border border-slate-600 overflow-hidden">
             <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-6 lg:p-8">
               <div className="text-center">
                 <div className="flex items-center justify-center gap-3 mb-4">
@@ -84,16 +84,16 @@ const QuoteCalculator = () => {
                   <div className="space-y-8">
                     {/* Tools Summary */}
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 flex items-center gap-4">
                         <Tag className="w-6 h-6 text-yellow-500" />
                         Herramientas Seleccionadas
                       </h3>
                       <div className="space-y-3">
                         {selectedTools.map(tool => (
-                          <div key={tool.id} className="flex justify-between items-center bg-gray-50 p-4 rounded-xl border border-gray-200 hover:border-gray-300 transition-colors duration-200">
+                          <div key={tool.id} className="flex justify-between items-center bg-background p-4 rounded-xl border border-slate-900 hover:border-gray-300 transition-colors duration-200">
                             <div>
                               <span className="font-semibold text-gray-900">{tool.name}</span>
-                              <p className="text-sm text-gray-500">{tool.category}</p>
+                              <p className="text-sm text-gray-700">{tool.category}</p>
                             </div>
                             <div className="flex items-center gap-4">
                               <span className="font-bold text-yellow-600 text-lg">

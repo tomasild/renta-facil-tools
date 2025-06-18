@@ -34,12 +34,13 @@ export default {
 				'dmac-yellow-hover': '#E6DF00',
 				'dmac-red': '#BF0411',
 				'dmac-red-hover': '#A0030E',
+				'dmac-green': '#004A42',
 				
 				// Semantic colors - Light mode only
 				border: '#e2e8f0', // slate-200
 				input: '#e2e8f0', // slate-200
 				ring: '#FEF800', // dmac-yellow
-				background: '#ffffff', // white
+				background: '#F2F0EF', // white
 				foreground: '#000000', // black
 				primary: {
 					DEFAULT: '#FEF800', // dmac-yellow
@@ -62,11 +63,11 @@ export default {
 					foreground: '#0f172a' // slate-900
 				},
 				popover: {
-					DEFAULT: '#ffffff', // white
+					DEFAULT: '#9C9D9E', // white
 					foreground: '#000000' // black
 				},
 				card: {
-					DEFAULT: '#ffffff', // white
+					DEFAULT: '#9C9D9E', // white
 					foreground: '#000000' // black
 				}
 			},

@@ -1,31 +1,42 @@
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem
+} from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
-import { Search, Filter, ShoppingCart, Calendar } from 'lucide-react';
-import { tools, Tool, getCategories } from '@/data/tools';
+import { Search, Calendar } from 'lucide-react';
+import { tools, getCategories } from '@/data/tools';
 import { useQuote } from '@/contexts/QuoteContext';
 import ToolCard from '@/components/ToolCard';
 import QuoteCalculator from '@/components/QuoteCalculator';
 
-const Catalog = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+const Catalog: React.FC = () => {
+  // Estados para búsqueda, categoría y orden
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('name');
-  
+
+  // Contexto de cotización
   const { selectedTools, addTool, removeTool, isToolSelected } = useQuote();
   const categories = getCategories();
 
+  // --- FILTRADO y ORDENAMIENTO ---
   const filteredTools = tools
-    .filter(tool => 
+    // 1) busca por nombre o descripción
+    .filter(tool =>
       tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       tool.description.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    .filter(tool => selectedCategory === 'all' || tool.category === selectedCategory)
+    // 2) filtra por categoría si no es "all"
+    .filter(tool =>
+      selectedCategory === 'all' || tool.category === selectedCategory
+    )
+    // 3) ordena según la opción seleccionada
     .sort((a, b) => {
       switch (sortBy) {
         case 'price-low':
@@ -41,14 +52,17 @@ const Catalog = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-black">
       <main id="main-content">
-        {/* Hero Section */}
-        <section 
+        {/* Hero */}
+        <section
           className="bg-gray-900 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8"
           role="banner"
           aria-labelledby="catalog-hero-heading"
         >
           <div className="container mx-auto text-center animate-fade-in-up">
-            <h1 id="catalog-hero-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading mb-4 text-white">
+            <h1
+              id="catalog-hero-heading"
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
+            >
               Catálogo de <span className="text-yellow-400">Herramientas</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
@@ -57,167 +71,104 @@ const Catalog = () => {
           </div>
         </section>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid lg:grid-cols-4 gap-8">
-            {/* Filtros y Búsqueda */}
-            <aside className="lg:col-span-1" role="complementary" aria-label="Filtros de búsqueda">
-              <Card className="sticky top-24 shadow-sm bg-white border-gray-300">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-black">
-                    <Filter className="h-5 w-5" aria-hidden="true" />
-                    Filtros
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  {/* Búsqueda */}
-                  <div>
-                    <label htmlFor="search" className="block text-sm font-medium mb-2 text-black">
-                      Buscar herramientas
-                    </label>
-                    <div className="relative">
-                      <Search className="absolute left-3 top-3 h-4 w-4 text-gray-500" aria-hidden="true" />
-                      <Input
-                        id="search"
-                        type="search"
-                        placeholder="Buscar por nombre o descripción..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10 border-gray-300"
-                        aria-describedby="search-help"
-                      />
-                    </div>
-                    <p id="search-help" className="text-xs text-gray-500 mt-1">
-                      Busca por nombre o descripción de la herramienta
-                    </p>
-                  </div>
-
-                  {/* Categoría */}
-                  <div>
-                    <label htmlFor="category" className="block text-sm font-medium mb-2 text-black">
-                      Categoría
-                    </label>
-                    <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                      <SelectTrigger id="category" className="border-gray-300">
-                        <SelectValue placeholder="Seleccionar categoría" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">Todas las categorías</SelectItem>
-                        {categories.map(category => (
-                          <SelectItem key={category} value={category}>
-                            {category}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Ordenar */}
-                  <div>
-                    <label htmlFor="sort" className="block text-sm font-medium mb-2 text-black">
-                      Ordenar por
-                    </label>
-                    <Select value={sortBy} onValueChange={setSortBy}>
-                      <SelectTrigger id="sort" className="border-gray-300">
-                        <SelectValue placeholder="Ordenar por" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="name">Nombre A-Z</SelectItem>
-                        <SelectItem value="price-low">Precio: Menor a Mayor</SelectItem>
-                        <SelectItem value="price-high">Precio: Mayor a Menor</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Resumen de selección */}
-                  {selectedTools.length > 0 && (
-                    <div className="bg-gray-200 p-4 rounded-lg border border-gray-300">
-                      <h3 className="font-semibold mb-2 flex items-center gap-2 text-black">
-                        <ShoppingCart className="h-4 w-4" aria-hidden="true" />
-                        Herramientas Seleccionadas
-                      </h3>
-                      <Badge variant="secondary" className="bg-gray-300 text-black">
-                        {selectedTools.length} herramienta{selectedTools.length !== 1 ? 's' : ''}
-                      </Badge>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </aside>
-
-            {/* Lista de Herramientas */}
-            <main className="lg:col-span-3">
-              {/* Información de resultados */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-                <div>
-                  <h2 className="text-2xl font-bold mb-2 text-black">
-                    {filteredTools.length} herramienta{filteredTools.length !== 1 ? 's' : ''} encontrada{filteredTools.length !== 1 ? 's' : ''}
-                  </h2>
-                  {searchTerm && (
-                    <p className="text-gray-600">
-                      Resultados para "{searchTerm}"
-                    </p>
-                  )}
-                </div>
-                {selectedCategory !== 'all' && (
-                  <Badge variant="outline" className="mt-2 sm:mt-0 border-gray-600 text-gray-700">
-                    {selectedCategory}
-                  </Badge>
-                )}
-              </div>
-
-              {/* Grid de herramientas */}
-              {filteredTools.length > 0 ? (
-                <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
-                  {filteredTools.map((tool, index) => (
-                    <div 
-                      key={tool.id} 
-                      className="animate-fade-in-up"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                      <ToolCard
-                        tool={tool}
-                        onAdd={addTool}
-                        onRemove={removeTool}
-                        isSelected={isToolSelected(tool)}
-                      />
-                    </div>
+        {/* Contenedor principal */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+          
+          {/* Barra de búsqueda, filtro y orden */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            {/* Input de búsqueda */}
+            <div className="relative w-full sm:w-1/3">
+              <Search className="absolute left-3 top-3 h-5 w-5 text-gray-500" />
+              <Input
+                type="search"
+                placeholder="Buscar herramienta..."
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+                className="pl-10 pr-4 py-2 border-gray-300 rounded-lg w-full"
+                aria-label="Buscar herramientas"
+              />
+            </div>
+            {/* Select de categoría */}
+            <div className="w-full sm:w-1/3">
+              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <SelectTrigger className="w-full border-gray-300 rounded-lg">
+                  <SelectValue placeholder="Todas las categorías" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Todas las categorías</SelectItem>
+                  {categories.map(cat => (
+                    <SelectItem key={cat} value={cat}>
+                      {cat}
+                    </SelectItem>
                   ))}
-                </div>
-              ) : (
-                <div className="text-center py-12">
-                  <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" aria-hidden="true" />
-                  <h3 className="text-lg font-semibold mb-2 text-black">No se encontraron herramientas</h3>
-                  <p className="text-gray-600 mb-4">
-                    Intenta ajustar tus filtros o términos de búsqueda
-                  </p>
-                  <Button 
-                    onClick={() => {
-                      setSearchTerm('');
-                      setSelectedCategory('all');
-                    }}
-                    variant="outline"
-                    className="border-gray-600 text-gray-700 hover:bg-gray-600 hover:text-white"
-                  >
-                    Limpiar filtros
-                  </Button>
-                </div>
-              )}
-
-              {/* Separador antes del calculador */}
-              {selectedTools.length > 0 && (
-                <>
-                  <Separator className="my-12" />
-                  <div className="animate-fade-in-up">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2 text-black">
-                      <Calendar className="h-6 sm:h-8 w-6 sm:w-8 text-red-600" aria-hidden="true" />
-                      Calculadora de Cotización
-                    </h2>
-                    <QuoteCalculator />
-                  </div>
-                </>
-              )}
-            </main>
+                </SelectContent>
+              </Select>
+            </div>
+            {/* Select de orden */}
+            <div className="w-full sm:w-1/3">
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-full border-gray-300 rounded-lg">
+                  <SelectValue placeholder="Ordenar por" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="name">Nombre A-Z</SelectItem>
+                  <SelectItem value="price-low">Precio: Menor → Mayor</SelectItem>
+                  <SelectItem value="price-high">Precio: Mayor → Menor</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
+
+          {/* Grid de resultados */}
+          {filteredTools.length > 0 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredTools.map((tool, idx) => (
+                <div
+                  key={tool.id}
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: `${idx * 100}ms` }}
+                >
+                  <ToolCard
+                    tool={tool}
+                    onAdd={addTool}
+                    onRemove={removeTool}
+                    isSelected={isToolSelected(tool)}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold mb-2">No se encontraron herramientas</h3>
+              <p className="text-gray-600 mb-4">Ajusta tu búsqueda o filtros.</p>
+              <Button
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedCategory('all');
+                  setSortBy('name');
+                }}
+                variant="outline"
+                className="border-gray-600 text-gray-700 hover:bg-gray-600 hover:text-white"
+              >
+                Limpiar filtros
+              </Button>
+            </div>
+          )}
+
+          {/* Separador + Cotizador */}
+          {selectedTools.length > 0 && (
+            <>
+              <Separator className="my-12" />
+              <div className="animate-fade-in-up">
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2">
+                  <Calendar className="h-6 sm:h-8 w-6 sm:w-8 text-red-600" />
+                  Calculadora de Cotización
+                </h2>
+                <QuoteCalculator />
+              </div>
+            </>
+          )}
         </div>
       </main>
     </div>
