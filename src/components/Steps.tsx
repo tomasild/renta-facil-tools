@@ -28,11 +28,11 @@ export const Steps = ({ children, className }: StepsProps) => {
 export const Step = ({ number, title, description, icon, className }: StepProps) => {
   return (
     <div className={cn("text-center relative z-10", className)}>
-      <div className="step-number mx-auto mb-6" aria-label={`Paso ${number}`}>
+      <div className="step-number mx-auto mb-6 font-bold" aria-label={`Paso ${number}`}>
         {icon || number}
       </div>
-      <h3 className="text-2xl font-bold mb-4 text-foreground">{title}</h3>
-      <p className="text-muted-foreground">{description}</p>
+      <h3 className="text-2xl font-bold mb-4 text-slate-200">{title}</h3>
+      <p className="text-slate-400 text-lg sm:text-xl">{description}</p>
     </div>
   );
 };

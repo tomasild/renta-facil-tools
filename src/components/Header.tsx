@@ -169,7 +169,7 @@ const Header = () => {
           
           <Button 
             asChild 
-            className="w-full mt-4 bg-yellow-400 hover:bg-yellow-500 text-black font-bold focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
+            className="w-full mt-4 bg-dmac-yellow hover:bg-dmac-yellow-hover text-black font-bold focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900" 
             size="lg"
           >
             <Link to="/catalogo" onClick={() => setIsMenuOpen(false)}>Cotiza aquí</Link>

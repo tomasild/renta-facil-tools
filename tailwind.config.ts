@@ -30,7 +30,7 @@ export default {
 			},
 			colors: {
 				// DMAC Brand Colors - Simplified
-				'dmac-yellow': '#FEF800',
+				'dmac-yellow': '#EAB308',
 				'dmac-yellow-hover': '#E6DF00',
 				'dmac-red': '#BF0411',
 				'dmac-red-hover': '#A0030E',
@@ -43,7 +43,7 @@ export default {
 				background: '#F2F0EF', // white
 				foreground: '#000000', // black
 				primary: {
-					DEFAULT: '#FEF800', // dmac-yellow
+					DEFAULT: '#EAB308', // dmac-yellow
 					foreground: '#000000' // black
 				},
 				secondary: {
@@ -67,8 +67,8 @@ export default {
 					foreground: '#000000' // black
 				},
 				card: {
-					DEFAULT: '#9C9D9E', // white
-					foreground: '#000000' // black
+					DEFAULT: '#1E293B ', // slate 600
+					foreground: '#FFFFFF' // black
 				}
 			},
 			borderRadius: {

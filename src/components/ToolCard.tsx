@@ -27,14 +27,14 @@ const ToolCard = ({ tool, onAdd, onRemove, isSelected }: ToolCardProps) => {
         className="w-full h-auto object-cover bg-muted" 
       />
       <div className="p-4 flex flex-col flex-grow">
-        <h3 className="text-base xl:text-xl font-bold text-foreground mb-2">{tool.name}</h3>
-        <p className="text-muted-foreground text-sm mb-4 flex-grow text-balance">{tool.description}</p>
+        <h3 className="text-base xl:text-xl font-bold text-slate-200 mb-2">{tool.name}</h3>
+        <p className="text-slate-400 text-sm mb-4 flex-grow text-balance">{tool.description}</p>
         
         <div className="mt-auto pt-4 border-t border-border">
           <div className="flex justify-between items-center mb-4">
             <p className="text-lg xl:text-2xl font-bold text-dmac-yellow">
               ${tool.pricePerDay.toLocaleString('es-CL')}
-              <span className="text-sm font-normal text-muted-foreground">/día</span>
+              <span className="text-sm font-normal text-slate-200">/día</span>
             </p>
           </div>
           <Button

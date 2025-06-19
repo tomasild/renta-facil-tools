@@ -38,10 +38,10 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-16 bg-dmac-gray dark:bg-gray-800">
+    <section className="py-16 bg-slate-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-dmac-red animate-fade-in-up">
+          <h2 className="text-3xl font-bold text-center mb-12 text-background animate-fade-in-up">
             Preguntas Frecuentes
           </h2>
           <div className="space-y-4">
