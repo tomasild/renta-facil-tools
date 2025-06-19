@@ -164,7 +164,7 @@ const Header = () => {
               className={({ isActive }) =>
                 `w-full rounded-md py-3 text-center text-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red ${
                   isActive
-                    ? "bg-white/10 font-bold text-white"
+                    ? "bg-white/10 font-bold text-background"
                     : "text-white/90 hover:text-white"
                 }`
               }
