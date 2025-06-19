@@ -41,7 +41,7 @@ const Home = () => {
             maxTransition={45}
           >
             <img
-              src="/banner.png"
+              src="banner.png"
               alt="Herramientas profesionales DMAC"
               className="absolute inset-0 -z-10 h-full w-full object-cover"
             />
@@ -105,7 +105,7 @@ const Home = () => {
           className="relative overflow-hidden bg-card py-16 lg:py-24"
         >
           <div
-            className="pointer-events-none absolute inset-0 -z-10 bg-[url('/banner.png')] bg-cover bg-center opacity-5"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[url('banner.png')] bg-cover bg-center opacity-5"
             aria-hidden
           />
 

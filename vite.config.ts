@@ -5,7 +5,10 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/',
+  base: './', // Changed for relative paths, suitable for GitHub Pages/Netlify
+  build: {
+    outDir: 'dist', // Standard output directory
+  },
   server: {
     host: "::",
     port: 8080,
