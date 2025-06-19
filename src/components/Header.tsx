@@ -77,7 +77,7 @@ const Header = () => {
           className="flex items-center gap-3 rounded-md p-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dmac-red"
         >
           <img
-            src="/logo-no-bg.png"
+            src="logo-no-bg.png"
             alt="DMAC logo"
             className="w-48 h-auto -mt-8 xl:h-auto xl:w-1/2 xl:-mt-10"
             onError={(e) => {
