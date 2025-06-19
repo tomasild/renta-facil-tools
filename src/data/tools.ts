@@ -11,60 +11,61 @@ export interface Tool {
 
 export const tools: Tool[] = [
   {
-    id: '1',
-    name: 'Taladro Percutor HD',
-    category: 'Herramientas Eléctricas',
-    pricePerDay: 8000,
-    description: 'Taladro percutor profesional para concreto y mampostería',
-    features: ['800W de potencia', 'Función percutor', 'Mandril SDS-Plus', 'Incluye brocas'],
-    image: '/placeholder.svg'
-  },
-  {
-    id: '2',
-    name: 'Sierra Circular Pro',
+    id: 'ESM-45',
+    name: 'Esmeril Angular 4 ½″ 750 W',
     category: 'Herramientas de Corte',
-    pricePerDay: 12000,
-    description: 'Sierra circular profesional para madera y materiales diversos',
-    features: ['1200W de potencia', 'Disco 7 1/4"', 'Guía láser', 'Base ajustable'],
-    image: '/placeholder.svg'
+    pricePerDay: 13000,
+    description: 'Esmeril compacto de 4 ½″ ideal para corte y desbaste ligero en metal y hormigón.',
+    features: ['Potencia 750 W', 'Disco 115 mm', '11 000 rpm', 'Empuñadura lateral antideslizante'],
+    image: 'https://olateferreteria.cl/wp-content/uploads/2023/02/TG10711556-600x600.png'
   },
   {
-    id: '3',
-    name: 'Amoladora Angular',
-    category: 'Herramientas de Desbaste',
+    id: 'ESM-90',
+    name: 'Esmeril Angular 9″ 2200 W',
+    category: 'Herramientas de Corte',
+    pricePerDay: 3000,
+    description: 'Esmeril de 9″ de alto torque para corte pesado y pulido industrial exigente.',
+    features: ['Potencia 2200 W', 'Disco 230 mm', 'Hasta 8 500 rpm', 'Empuñadura 3 posiciones'],
+    image: 'https://comercialfoch.cl/cdn/shop/files/image_2.png?v=1741705027&width=1946'
+  },
+  {
+    id: 'ROT-26',
+    name: 'Rotomartillo SDS-Plus 26 mm',
+    category: 'Herramientas de Percusión',
+    pricePerDay: 4500,
+    description: 'Rotomartillo 26 mm SDS-Plus para perforar hormigón con opción rotación y percusión.',
+    features: ['Motor 800 W', 'Energía 2,6 J', '1 500 rpm', 'Golpes 5 400 bpm'],
+    image: 'https://comercialfoch.cl/cdn/shop/files/image.png?v=1741704671&width=1445'
+  },
+  {
+    id: 'BOR-40',
+    name: 'Borhammer SDS-Max 40 mm',
+    category: 'Percusión Pesada',
     pricePerDay: 6000,
-    description: 'Amoladora angular para corte y desbaste de metales',
-    features: ['900W de potencia', 'Disco 4 1/2"', 'Empuñadura antivibración', 'Protector ajustable'],
-    image: '/placeholder.svg'
+    description: 'Borhammer SDS-Max para perforaciones profundas y cincelado continuo en concreto armado.',
+    features: ['Potencia 1 150 W', 'Energía 8,8 J', '1 500-3 050 bpm', 'Control de vibración'],
+    image: 'https://brsgroup.cl/wp-content/uploads/2022/09/Martillo-perforador-GBH-5-40-DCe-Bosch.jpg'
   },
   {
-    id: '4',
-    name: 'Martillo Demoledor',
+    id: 'DEM-32',
+    name: 'Martillo Demoledor 32 J',
     category: 'Herramientas de Demolición',
-    pricePerDay: 25000,
-    description: 'Martillo demoledor pesado para trabajos de demolición',
-    features: ['1500W de potencia', 'Sistema SDS-Max', 'Control de vibración', 'Incluye cinceles'],
-    image: '/placeholder.svg'
+    pricePerDay: 10000,
+    description: 'Demoledor pesado de 32 J para derribo de muros, losas y cimientos con mínima vibración.',
+    features: ['Potencia 1 500 W', 'Sistema SDS-Max', '32 J de impacto', 'Incluye cinceles'],
+    image: 'https://comercialfoch.cl/cdn/shop/files/image_5.png?v=1741705596&width=1445'
   },
   {
-    id: '5',
-    name: 'Compresor de Aire',
-    category: 'Equipos Neumáticos',
-    pricePerDay: 15000,
-    description: 'Compresor de aire portátil para herramientas neumáticas',
-    features: ['50L de capacidad', '8 bar de presión', 'Motor 2HP', 'Ruedas para transporte'],
-    image: '/placeholder.svg'
-  },
-  {
-    id: '6',
-    name: 'Soldadora Eléctrica',
-    category: 'Equipos de Soldadura',
-    pricePerDay: 18000,
-    description: 'Soldadora eléctrica por arco para trabajos de metal',
-    features: ['200A de corriente', 'Electrodo 2-4mm', 'Control digital', 'Incluye careta'],
-    image: '/placeholder.svg'
+    id: 'ASP-30',
+    name: 'Aspiradora Industrial 30 L',
+    category: 'Equipos de Limpieza',
+    pricePerDay: 7000,
+    description: 'Aspiradora polvo/agua de 30 L en acero inox para talleres y obras de construcción.',
+    features: ['Motor 1 000 W', 'Estanque 30 L', 'Función soplado', 'Ruedas de transporte'],
+    image: 'https://brsgroup.cl/wp-content/uploads/2022/09/Aspiradora-Agua-Polvo-30-litros-1-500x500.jpg'
   }
 ];
+
 
 // Función para calcular descuentos por duración
 export const calculateDiscount = (days: number): number => {

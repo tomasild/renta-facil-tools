@@ -62,7 +62,7 @@ const Card = ({
         role="img"
         aria-label="Icono de dolor"
       />
-      <h3 className="text-lg font-semibold text-dmac-red" itemProp="name">
+      <h3 className="text-lg font-semibold text-red-500" itemProp="name">
         {painTitle}
       </h3>
       {painDesc && (

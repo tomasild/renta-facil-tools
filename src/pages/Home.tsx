@@ -14,6 +14,8 @@ import FAQ from "@/components/FAQ";
 import { Link } from "react-router-dom";
 import ProblemSolutionCards from "@/components/ProblemSolutionsCards";
 import BentoGrid from "@/components/BentoGrid";
+import ToolCard from "@/components/ToolCard";
+import { tools as allTools } from "@/data/tools";
 
 const Home = () => {
   const tools = [
@@ -22,6 +24,9 @@ const Home = () => {
     { name: "Amoladora Angular", price: 6000, image: "/placeholder.svg" },
     { name: "Martillo Demoledor", price: 25000, image: "/placeholder.svg" },
   ];
+
+  // Selecciona 4 herramientas destacadas (puedes cambiar la lógica)
+  const featuredTools = allTools.slice(0, 4);
 
   return (
     <div className="min-h-screen bg-white">
@@ -166,34 +171,19 @@ const Home = () => {
         <section className="bg-gray-50 py-16 lg:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <header className="mb-16 text-center">
-              <h2 className="mb-6 text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-                Herramientas <span className="text-yellow-500">profesionales</span>
+              <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
+                Herramientas{" "}
+                <span className="text-yellow-500">profesionales</span>
               </h2>
               <p className="text-xl text-gray-600">
                 Equipos de última generación para cualquier proyecto
               </p>
             </header>
 
+            {/* Grid de ToolCard reutilizado sin precio ni botón */}
             <div className="mb-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {tools.map((tool) => (
-                <article
-                  key={tool.name}
-                  className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow duration-300 hover:border-gray-200 hover:shadow-xl"
-                >
-                  <figure className="mb-4 overflow-hidden rounded-xl bg-gray-100 aspect-square">
-                    <img
-                      src={tool.image}
-                      alt={`Vista del ${tool.name}`}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </figure>
-                  <h3 className="mb-2 text-lg sm:text-xl font-bold text-gray-900">
-                    {tool.name}
-                  </h3>
-                  <p className="text-base sm:text-lg font-bold text-yellow-600">
-                    ${tool.price.toLocaleString("es-CL")} / día
-                  </p>
-                </article>
+              {featuredTools.map((tool) => (
+                <ToolCard key={tool.id} tool={tool} hidePrice hideControls />
               ))}
             </div>
 
@@ -201,8 +191,8 @@ const Home = () => {
               <Button
                 asChild
                 size="lg"
-                variant="outline"
-                className="border-2 border-gray-900 px-8 py-4 font-semibold text-gray-900 rounded-xl transition-colors duration-300 hover:bg-gray-900 hover:text-white"
+                variant="default"
+                className="rounded-xl border- border-slate-800 px-8 py-4 font-semibold text-slate-900 transition-colors duration-300 hover:bg-card hover:text-white"
               >
                 <Link to="/catalogo">
                   Ver catálogo completo

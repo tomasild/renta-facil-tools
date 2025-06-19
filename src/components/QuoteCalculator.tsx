@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
 import { addDays, format, differenceInDays } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { Calendar as CalendarIcon, Send, Trash2, Tag, Calculator } from 'lucide-react';
+import { Calendar as CalendarIcon, Send, Trash2, Tag, Calculator, Wrench } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -85,7 +85,7 @@ const QuoteCalculator = () => {
                     {/* Tools Summary */}
                     <div>
                       <h3 className="text-xl sm:text-2xl font-bold text-slate-200 mb-6 flex items-center gap-4">
-                        <Tag className="w-6 h-6 text-yellow-500" />
+                        <Wrench className="w-6 h-6 text-yellow-500" />
                         Herramientas Seleccionadas
                       </h3>
                       <div className="space-y-3">
