@@ -5,9 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: './', // Changed for relative paths, suitable for GitHub Pages/Netlify
+  base: '/renta-facil-tools/',
   build: {
-    outDir: 'dist', // Standard output directory
+    outDir: 'dist',
   },
   server: {
     host: "::",
