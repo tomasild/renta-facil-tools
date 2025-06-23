@@ -3,7 +3,7 @@ import { HardHat, Menu, X, Instagram, Linkedin } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-no-bg.png";
+import logo from "@/assets/logo-no-bg.png"
 
 /* ---------- ÍCONOS RRSS ---------- */
 const SocialIcon = ({

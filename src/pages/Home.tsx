@@ -16,6 +16,7 @@ import ProblemSolutionCards from "@/components/ProblemSolutionsCards";
 import BentoGrid from "@/components/BentoGrid";
 import ToolCard from "@/components/ToolCard";
 import { tools as allTools } from "@/data/tools";
+import banner from "@/assets/banner.png"; // Asegúrate de que la ruta sea correcta
 
 const Home = () => {
   const tools = [
@@ -41,7 +42,7 @@ const Home = () => {
             maxTransition={45}
           >
             <img
-              src="/banner.png"
+              src={banner}
               alt="Herramientas profesionales DMAC"
               className="absolute inset-0 -z-10 h-full w-full object-cover"
             />
