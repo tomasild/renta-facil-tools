@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { QuoteProvider } from "./contexts/QuoteContext";
 import Home from "./pages/Home";
@@ -22,7 +22,10 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          {/* Usar HashRouter para compatibilidad con GitHub Pages */}
+          {/* Alternativamente, se podría configurar el basename en BrowserRouter si se prefiere no usar hash routing:
+          <BrowserRouter basename={import.meta.env.PROD ? "/renta-facil-tools/" : "/"}> */}
+          <HashRouter>
             <div className="min-h-screen flex flex-col bg-background text-foreground">
               <Header />
               <main className="flex-grow">
@@ -35,7 +38,7 @@ const App = () => (
               </main>
               <Footer />
             </div>
-          </BrowserRouter>
+          </HashRouter>
         </TooltipProvider>
       </QuoteProvider>
     </ThemeProvider>
