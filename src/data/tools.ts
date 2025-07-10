@@ -1,6 +1,7 @@
 
 export interface Tool {
   id: string;
+  brand: string;
   name: string;
   category: string;
   pricePerDay: number;
@@ -11,60 +12,77 @@ export interface Tool {
 
 export const tools: Tool[] = [
   {
-    id: 'ESM-45',
-    name: 'Esmeril Angular 4 ½″ 750 W',
-    category: 'Herramientas de Corte',
-    pricePerDay: 13000,
-    description: 'Esmeril compacto de 4 ½″ ideal para corte y desbaste ligero en metal y hormigón.',
-    features: ['Potencia 750 W', 'Disco 115 mm', '11 000 rpm', 'Empuñadura lateral antideslizante'],
-    image: 'https://olateferreteria.cl/wp-content/uploads/2023/02/TG10711556-600x600.png'
+    "id": "D002722",
+    "brand": "Einhell",
+    "name": "Esmeril angular 4½″ 750 W",
+    "category": "Herramientas de Corte",
+    "pricePerDay": 12000,
+    "description": "Corte ligero en metal y hormigón.",
+    "features": ["Potencia 750 W", "Disco 115 mm", "11 000 rpm", "Empuñadura antideslizante"],
+    "image": "https://d2c5rvsfjg2eub.cloudfront.net/image/208244749100/image_59lupuke5d5otbn8n21is57l38/-FJPG-FWEBP-B800"
   },
   {
-    id: 'ESM-90',
-    name: 'Esmeril Angular 9″ 2200 W',
-    category: 'Herramientas de Corte',
-    pricePerDay: 3000,
-    description: 'Esmeril de 9″ de alto torque para corte pesado y pulido industrial exigente.',
-    features: ['Potencia 2200 W', 'Disco 230 mm', 'Hasta 8 500 rpm', 'Empuñadura 3 posiciones'],
-    image: 'https://comercialfoch.cl/cdn/shop/files/image_2.png?v=1741705027&width=1946'
+    "id": "D0421022",
+    "brand": "Bosch",
+    "name": "Esmeril angular 4½″ 720 W",
+    "category": "Herramientas de Corte",
+    "pricePerDay": 13000,
+    "description": "Corte y desbaste precisos.",
+    "features": ["Potencia 720 W", "Disco 115 mm", "11 000 rpm", "Cuerpo ergonómico"],
+    "image": "https://www.bosch-professional.com/ge/en/ocsmedia/67036-54/application-image/1434x828/angle-grinder-gws-7-115-0601388106.png"
   },
   {
-    id: 'ROT-26',
-    name: 'Rotomartillo SDS-Plus 26 mm',
-    category: 'Herramientas de Percusión',
-    pricePerDay: 4500,
-    description: 'Rotomartillo 26 mm SDS-Plus para perforar hormigón con opción rotación y percusión.',
-    features: ['Motor 800 W', 'Energía 2,6 J', '1 500 rpm', 'Golpes 5 400 bpm'],
-    image: 'https://comercialfoch.cl/cdn/shop/files/image.png?v=1741704671&width=1445'
+    "id": "D0510223",
+    "brand": "Bosch",
+    "name": "Esmeril angular 9″ 2400 W",
+    "category": "Herramientas de Corte Pesado",
+    "pricePerDay": 18000,
+    "description": "Corte pesado en acero y hormigón.",
+    "features": ["Potencia 2400 W", "Disco 230 mm", "6500 rpm", "Antivibración"],
+    "image": "https://www.bosch-professional.com/eg/en/ocsmedia/354644-54/application-image/1434x828/angle-grinder-gws-24-230-06018C30K0.png"
   },
   {
-    id: 'BOR-40',
-    name: 'Borhammer SDS-Max 40 mm',
-    category: 'Percusión Pesada',
-    pricePerDay: 6000,
-    description: 'Borhammer SDS-Max para perforaciones profundas y cincelado continuo en concreto armado.',
-    features: ['Potencia 1 150 W', 'Energía 8,8 J', '1 500-3 050 bpm', 'Control de vibración'],
-    image: 'https://brsgroup.cl/wp-content/uploads/2022/09/Martillo-perforador-GBH-5-40-DCe-Bosch.jpg'
+    "id": "D008722",
+    "brand": "Bosch",
+    "name": "Rotomartillo GBH 2-28 880 W",
+    "category": "Herramientas de Percusión",
+    "pricePerDay": 20000,
+    "description": "Perforación y cincelado.",
+    "features": ["Potencia 880 W", "3,2 J impacto", "4-28 mm", "KickBack Control"],
+    "image": "https://www.bosch-professional.com/gb/en/ocsmedia/376087-54/application-image/1434x828/rotary-hammer-with-sds-plus-gbh-2-28-0611267561.png"
   },
   {
-    id: 'DEM-32',
-    name: 'Martillo Demoledor 32 J',
-    category: 'Herramientas de Demolición',
-    pricePerDay: 10000,
-    description: 'Demoledor pesado de 32 J para derribo de muros, losas y cimientos con mínima vibración.',
-    features: ['Potencia 1 500 W', 'Sistema SDS-Max', '32 J de impacto', 'Incluye cinceles'],
-    image: 'https://comercialfoch.cl/cdn/shop/files/image_5.png?v=1741705596&width=1445'
+    "id": "D018722",
+    "brand": "Einhell",
+    "name": "Rotomartillo TC-RH 900 900 W",
+    "category": "Herramientas de Percusión",
+    "pricePerDay": 18000,
+    "description": "Taladro percutor 3-en-1.",
+    "features": ["Potencia 900 W", "3 J impacto", "hasta 4000 ipm", "Función cincel"],
+    "image": "https://d2c5rvsfjg2eub.cloudfront.net/image/208244749100/image_66sqqmiluh4pjbvv5qmifl5d27/-FJPG-FWEBP-B800"
   },
   {
-    id: 'ASP-30',
-    name: 'Aspiradora Industrial 30 L',
-    category: 'Equipos de Limpieza',
-    pricePerDay: 7000,
-    description: 'Aspiradora polvo/agua de 30 L en acero inox para talleres y obras de construcción.',
-    features: ['Motor 1 000 W', 'Estanque 30 L', 'Función soplado', 'Ruedas de transporte'],
-    image: 'https://brsgroup.cl/wp-content/uploads/2022/09/Aspiradora-Agua-Polvo-30-litros-1-500x500.jpg'
+    "id": "D048023",
+    "brand": "Bosch",
+    "name": "Demoledor GSH 5 CE 1150 W",
+    "category": "Herramientas de Demolición",
+    "pricePerDay": 28000,
+    "description": "Demolición con control de vibración.",
+    "features": ["Potencia 1150 W", "8,3 J impacto", "SDS-max", "Vario-Lock"],
+    "image": "https://www.bosch-professional.com/sa/en/ocsmedia/379697-54/application-image/1434x828/demolition-hammer-with-sds-max-gsh-5-ce-0611321060.png"
+  },
+  {
+    "id": "D024822",
+    "brand": "Bosch",
+    "name": "Aspiradora GAS 15 PS 1100 W",
+    "category": "Limpieza Industrial",
+    "pricePerDay": 15000,
+    "description": "Seco/húmedo 15 L.",
+    "features": ["Potencia 1100 W", "15 L", "270 mbar", "Filtro semiauto"],
+    "image": "https://www.bosch-professional.com/ao/en/ocsmedia/455245-54/application-image/1434x828/wet-dry-extractor-gas-15-ps-06019E5100.png"
   }
-];
+]
+
 
 
 // Función para calcular descuentos por duración
